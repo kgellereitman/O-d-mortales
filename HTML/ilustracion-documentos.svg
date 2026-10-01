@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 210" role="img" aria-labelledby="title desc">
+  <title id="title">Documentos válidos</title>
+  <desc id="desc">DNI tarjeta y documento de identidad.</desc>
+  <rect width="280" height="210" rx="16" fill="#fff1b8"/>
+  <g transform="rotate(-8 104 111)">
+    <rect x="28" y="55" width="155" height="102" rx="8" fill="#5bc0de" stroke="#111318" stroke-width="4"/>
+    <circle cx="66" cy="100" r="20" fill="#f8f8f5" stroke="#111318" stroke-width="3"/>
+    <path d="M48 135h36M103 88h55M103 104h40M103 120h45" stroke="#111318" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g transform="rotate(9 190 103)">
+    <rect x="122" y="44" width="112" height="143" rx="7" fill="#f8f8f5" stroke="#111318" stroke-width="4"/>
+    <path d="M140 71h72M140 88h57M140 105h65M140 139h48M140 155h65" stroke="#111318" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="180" cy="119" r="10" fill="#ffd84d" stroke="#111318" stroke-width="3"/>
+  </g>
+</svg>

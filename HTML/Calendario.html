@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Calendario político y electoral de Oíd Mortales.">
+	<title>Calendario | OÍD MORTALES</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body class="calendar-page">
+	<header class="site-header">
+		<nav class="topbar" aria-label="Navegación principal">
+			<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu"><span></span><span></span><span></span></button>
+			<div class="tabs">
+				<a class="tab blue" href="Partidos.html">Partidos</a>
+				<a class="tab" href="Debates.html">Debates actuales</a>
+				<a class="tab blue" href="Como-voto.html">¿Cómo voto?</a>
+			</div>
+		</nav>
+		<div class="side-menu" id="side-menu">
+			<a href="Index.html">Inicio</a><a href="Partidos.html">Partidos</a><a href="Debates.html">Debates actuales</a><a href="Como-voto.html">¿Cómo voto?</a>
+		</div>
+		<div class="brand-header calendar-header">
+			<div class="brand-line"><p class="brand">OÍD MORTALES</p><a class="profile" href="#perfil" aria-label="Perfil de usuario"></a></div>
+			<h1>Calendario</h1>
+		</div>
+	</header>
+
+	<main class="calendar-main">
+		<section class="calendar-card" aria-labelledby="calendar-title">
+			<div class="calendar-toolbar">
+				<button class="calendar-nav" id="previous-month" type="button" aria-label="Mes anterior">&lt;</button>
+				<h2 id="calendar-title">Septiembre 2025</h2>
+				<button class="calendar-nav" id="next-month" type="button" aria-label="Mes siguiente">&gt;</button>
+			</div>
+			<div class="calendar-selectors">
+				<label for="month-select">Mes</label>
+				<select id="month-select" aria-label="Seleccionar mes"></select>
+				<label for="year-select">Año</label>
+				<select id="year-select" aria-label="Seleccionar año"></select>
+			</div>
+			<div class="calendar-weekdays" aria-hidden="true">
+				<span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+			</div>
+			<div class="calendar-grid" id="calendar-grid" role="grid" aria-label="Días del mes"></div>
+		</section>
+
+		<section class="upcoming" aria-labelledby="upcoming-title">
+			<h2 id="upcoming-title">Próximas fechas:</h2>
+			<ul class="event-list">
+				<li><span class="event-icon" aria-hidden="true">▣</span><time datetime="2025-02-24">24/2</time><span>Elecciones de diputados</span></li>
+				<li><span class="event-icon" aria-hidden="true">▣</span><time datetime="2025-03-06">6/3</time><span>Elecciones presidenciales</span></li>
+				<li><span class="event-icon" aria-hidden="true">▣</span><time datetime="2025-03-12">12/3</time><span>Sanción de ley</span></li>
+			</ul>
+		</section>
+	</main>
+
+	<footer><div class="footer-inner" aria-label="Enlaces de contacto"><a class="footer-link" href="#instagram" aria-label="Instagram">ig</a><a class="footer-link" href="#donaciones" aria-label="Donaciones">$</a><a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">@</a></div></footer>
+	<script>
+		const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+		const monthSelect = document.querySelector('#month-select');
+		const yearSelect = document.querySelector('#year-select');
+		const calendarTitle = document.querySelector('#calendar-title');
+		const calendarGrid = document.querySelector('#calendar-grid');
+		const eventDates = { '2025-02-24': 'Elecciones de diputados', '2025-03-06': 'Elecciones presidenciales', '2025-03-12': 'Sanción de ley', '2025-09-09': 'Fecha clave', '2025-09-13': 'Fecha clave' };
+		let displayedDate = new Date(2025, 8, 1);
+
+		monthNames.forEach((month, index) => monthSelect.add(new Option(month, index)));
+		for (let year = 2024; year <= 2030; year += 1) yearSelect.add(new Option(year, year));
+
+		function dateKey(year, month, day) {
+			return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+		}
+
+		function renderCalendar() {
+			const year = displayedDate.getFullYear();
+			const month = displayedDate.getMonth();
+			const firstDay = new Date(year, month, 1).getDay();
+			const daysInMonth = new Date(year, month + 1, 0).getDate();
+			calendarTitle.textContent = `${monthNames[month]} ${year}`;
+			monthSelect.value = month;
+			yearSelect.value = year;
+			calendarGrid.innerHTML = '';
+
+			for (let index = 0; index < firstDay; index += 1) {
+				const emptyDay = document.createElement('span');
+				emptyDay.className = 'calendar-day is-empty';
+				emptyDay.setAttribute('aria-hidden', 'true');
+				calendarGrid.append(emptyDay);
+			}
+
+			for (let day = 1; day <= daysInMonth; day += 1) {
+				const key = dateKey(year, month, day);
+				const dayButton = document.createElement('button');
+				dayButton.className = 'calendar-day';
+				dayButton.type = 'button';
+				dayButton.textContent = day;
+				dayButton.setAttribute('role', 'gridcell');
+				if (eventDates[key]) {
+					dayButton.classList.add('has-event');
+					dayButton.title = eventDates[key];
+					dayButton.setAttribute('aria-label', `${day} de ${monthNames[month]}: ${eventDates[key]}`);
+				}
+				calendarGrid.append(dayButton);
+			}
+		}
+
+		document.querySelector('#previous-month').addEventListener('click', () => { displayedDate.setMonth(displayedDate.getMonth() - 1); renderCalendar(); });
+		document.querySelector('#next-month').addEventListener('click', () => { displayedDate.setMonth(displayedDate.getMonth() + 1); renderCalendar(); });
+		monthSelect.addEventListener('change', () => { displayedDate.setMonth(Number(monthSelect.value)); renderCalendar(); });
+		yearSelect.addEventListener('change', () => { displayedDate.setFullYear(Number(yearSelect.value)); renderCalendar(); });
+		document.querySelector('.menu-toggle').addEventListener('click', (event) => {
+			const sideMenu = document.querySelector('#side-menu');
+			const isOpen = sideMenu.classList.toggle('open');
+			event.currentTarget.setAttribute('aria-expanded', String(isOpen));
+		});
+		renderCalendar();
+	</script>
+</body>
+</html>

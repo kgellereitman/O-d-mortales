@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Debates actuales de política argentina - Oíd Mortales">
+	<title>Debates actuales | OÍD MORTALES</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+		:root { --ink:#111318; --paper:#f8f8f5; --yellow:#ffd84d; --blue:#ccefff; --panel:#dedede; --muted:#686868; --green:#bce8ce; --coral:#e8edcf; }
+		* { box-sizing:border-box; }
+		html { scroll-behavior:smooth; }
+		body { margin:0; color:var(--ink); background:var(--paper); font-family:Georgia,"Times New Roman",serif; }
+		button,a { font:inherit; }
+		.topbar { display:flex; align-items:stretch; min-height:58px; background:var(--ink); }
+		.menu-toggle { display:grid; width:58px; place-content:center; gap:5px; border:0; border-right:1px solid #333; background:transparent; cursor:pointer; }
+		.menu-toggle span { width:22px; height:2px; background:white; }
+		.tabs { display:grid; grid-template-columns:1fr 1.3fr 1fr; flex:1; }
+		.tab { display:grid; place-items:center; min-height:58px; padding:8px 12px; border:0; border-right:1px solid var(--ink); color:var(--ink); background:white; text-decoration:none; text-align:center; font-weight:700; cursor:pointer; }
+		.tab.active { background:var(--yellow); }
+		.tab.blue { background:var(--blue); }
+		.side-menu { display:none; position:absolute; z-index:3; width:min(300px,88vw); padding:10px 0; border:1px solid var(--ink); border-top:0; background:var(--paper); box-shadow:5px 5px 0 var(--ink); }
+		.side-menu.open { display:block; }
+		.side-menu a { display:block; padding:12px 18px; color:var(--ink); text-decoration:none; border-bottom:1px solid #ccc; }
+		.side-menu a:hover { background:var(--yellow); }
+		.brand-header { padding:24px clamp(20px,5vw,64px) 14px; }
+		.brand-line { display:flex; align-items:center; justify-content:space-between; }
+		.brand { margin:0; font-size:clamp(1rem,2vw,1.35rem); letter-spacing:.12em; font-weight:700; }
+		.profile { width:38px; height:38px; border:1px solid var(--ink); border-radius:50%; background:white; }
+		.profile::before,.profile::after { content:""; display:block; margin:auto; border:1.5px solid var(--ink); }
+		.profile::before { width:9px; height:9px; margin-top:7px; border-radius:50%; }
+		.profile::after { width:18px; height:9px; margin-top:3px; border-radius:12px 12px 0 0; border-bottom:0; }
+		h1 { margin:28px 0 18px; font-size:clamp(2rem,4vw,3rem); line-height:1; }
+		main { padding:0 clamp(20px,5vw,64px) 100px; }
+		.feature { display:flex; align-items:center; min-height:136px; margin-bottom:26px; padding:24px clamp(20px,4vw,42px); border-radius:2px; background:var(--panel); }
+		.feature h2 { max-width:580px; margin:0; font-size:clamp(1.2rem,2.5vw,1.8rem); line-height:1.12; }
+		.debate-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; max-width:960px; margin:0 auto; }
+		.debate-card { display:flex; flex-direction:column; min-height:216px; padding:20px; border:1px solid var(--ink); border-radius:14px; background:white; transition:transform .2s ease,box-shadow .2s ease; }
+		.debate-card:hover,.debate-card:focus-within { transform:translateY(-3px); box-shadow:4px 4px 0 var(--ink); }
+		.debate-meta { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; color:var(--muted); font-size:.82rem; }
+		.status { padding:5px 9px; border:1px solid var(--ink); border-radius:999px; color:var(--ink); font-size:.74rem; font-weight:700; }
+		.status.hot { background:var(--coral); }
+		.status.open { background:var(--green); }
+		.debate-title { margin:0 0 10px; font-size:clamp(1.1rem,2vw,1.35rem); line-height:1.15; }
+		.debate-description { margin:0; color:#383838; font-size:.96rem; line-height:1.4; }
+		.debate-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:auto; padding-top:20px; }
+		.debate-count { color:var(--muted); font-size:.83rem; }
+		.debate-link { padding:7px 12px; border:1px solid var(--ink); border-radius:5px; color:var(--ink); background:var(--yellow); text-decoration:none; font-size:.86rem; font-weight:700; }
+		.debate-link:hover,.debate-link:focus-visible { background:var(--blue); outline:none; }
+		footer { display:flex; justify-content:center; padding:16px 20px 22px; }
+		.footer-inner { display:flex; justify-content:center; gap:30px; width:min(100%,960px); padding:15px; border-radius:16px; background:#000; }
+		.footer-link { display:grid; width:34px; height:34px; place-items:center; border:1px solid white; border-radius:50%; color:white; text-decoration:none; font-size:.85rem; }
+		@media (max-width:620px) {
+			.topbar { min-height:52px; }.menu-toggle { width:48px; }.tab { min-height:52px; padding:7px 5px; font-size:.78rem; }
+			.brand-header { padding-top:20px; }.feature { min-height:94px; padding:18px 20px; }.debate-grid { grid-template-columns:1fr; gap:12px; }
+			.debate-card { min-height:194px; padding:16px; } main { padding-bottom:60px; }
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav class="topbar" aria-label="Navegación principal">
+			<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu"><span></span><span></span><span></span></button>
+			<div class="tabs"><a class="tab" href="partidos.html">Partidos</a><a class="tab active" href="debates.html" aria-current="page">Debates actuales</a><a class="tab blue" href="como-voto.html">¿Cómo voto?</a></div>
+		</nav>
+		<div class="side-menu" id="side-menu"><a href="index.html">Inicio</a><a href="partidos.html">Partidos</a><a href="debates.html">Debates actuales</a><a href="como-voto.html">¿Cómo voto?</a></div>
+		<div class="brand-header"><div class="brand-line"><p class="brand">OÍD MORTALES</p><a class="profile" href="#perfil" aria-label="Perfil de usuario"></a></div><h1 id="debates">Debates actuales</h1></div>
+	</header>
+	<main>
+		<section class="feature" aria-label="Presentación de debates">
+			<h2>Las conversaciones que están moviendo la agenda política.</h2>
+		</section>
+		<section class="debate-grid" aria-label="Debates actuales">
+			<article class="debate-card">
+				<div class="debate-meta"><span>Economía</span><span class="status hot">En tendencia</span></div>
+				<h2 class="debate-title">¿Cómo recuperar el poder adquisitivo?</h2>
+				<p class="debate-description">Salarios, inflación y las propuestas para mejorar la vida cotidiana.</p>
+				<div class="debate-footer"><span class="debate-count">1.248 opiniones</span><a class="debate-link" href="#economia">Participar</a></div>
+			</article>
+			<article class="debate-card">
+				<div class="debate-meta"><span>Educación</span><span class="status open">Abierto</span></div>
+				<h2 class="debate-title">El futuro de la educación pública</h2>
+				<p class="debate-description">Presupuesto, calidad y acceso: distintas miradas sobre la escuela que viene.</p>
+				<div class="debate-footer"><span class="debate-count">864 opiniones</span><a class="debate-link" href="#educacion">Participar</a></div>
+			</article>
+			<article class="debate-card">
+				<div class="debate-meta"><span>Ambiente</span><span class="status open">Abierto</span></div>
+				<h2 class="debate-title">Producción y cuidado del ambiente</h2>
+				<p class="debate-description">Qué modelo de desarrollo queremos para nuestras provincias y comunidades.</p>
+				<div class="debate-footer"><span class="debate-count">532 opiniones</span><a class="debate-link" href="#ambiente">Participar</a></div>
+			</article>
+			<article class="debate-card">
+				<div class="debate-meta"><span>Instituciones</span><span class="status hot">En tendencia</span></div>
+				<h2 class="debate-title">¿Qué Estado necesitamos?</h2>
+				<p class="debate-description">Una discusión sobre el rol del Estado, sus prioridades y sus límites.</p>
+				<div class="debate-footer"><span class="debate-count">1.021 opiniones</span><a class="debate-link" href="#instituciones">Participar</a></div>
+			</article>
+		</section>
+	</main>
+	<footer><div class="footer-inner" aria-label="Enlaces de contacto"><a class="footer-link" href="#instagram" aria-label="Instagram">ig</a><a class="footer-link" href="#donaciones" aria-label="Donaciones">$</a><a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">@</a></div></footer>
+	<script>
+		const menuButton = document.querySelector('.menu-toggle');
+		const sideMenu = document.querySelector('#side-menu');
+		menuButton.addEventListener('click', () => { const isOpen = sideMenu.classList.toggle('open'); menuButton.setAttribute('aria-expanded', String(isOpen)); });
+	</script>
+</body>
+</html>

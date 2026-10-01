@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Encuestas sobre política argentina en Oíd Mortales.">
+	<title>Encuestas | OÍD MORTALES</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body class="polls-page">
+	<header class="site-header">
+		<nav class="topbar" aria-label="Navegación principal">
+			<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu"><span></span><span></span><span></span></button>
+			<div class="tabs">
+				<a class="tab blue" href="Partidos.html">Partidos</a>
+				<a class="tab" href="Debates.html">Debates actuales</a>
+				<a class="tab blue" href="Como-voto.html">¿Cómo voto?</a>
+			</div>
+		</nav>
+		<div class="side-menu" id="side-menu">
+			<a href="Index.html">Inicio</a><a href="Partidos.html">Partidos</a><a href="Debates.html">Debates actuales</a><a href="Como-voto.html">¿Cómo voto?</a>
+		</div>
+		<div class="brand-header polls-header">
+			<div class="brand-line"><p class="brand">OÍD MORTALES</p><a class="profile" href="#perfil" aria-label="Perfil de usuario"></a></div>
+			<h1>Encuestas</h1>
+		</div>
+	</header>
+
+	<main class="polls-main">
+		<form class="poll-form" id="poll-form">
+			<fieldset class="poll-card">
+				<legend>¿Considera que el Estado argentino cumple de manera efectiva con su función de garantizar derechos y bienestar a la población?</legend>
+				<div class="poll-options">
+					<label class="poll-option"><input type="radio" name="state-function" value="effective" required><span>Sí, de manera efectiva</span></label>
+					<label class="poll-option"><input type="radio" name="state-function" value="partial"><span>Parcialmente</span></label>
+					<label class="poll-option"><input type="radio" name="state-function" value="insufficient"><span>No, de manera insuficiente</span></label>
+					<label class="poll-option"><input type="radio" name="state-function" value="no-answer"><span>No sabe / No responde</span></label>
+				</div>
+			</fieldset>
+
+			<fieldset class="poll-card">
+				<legend>¿Qué nivel de confianza tiene en las instituciones democráticas de Argentina (Congreso, Poder Judicial, Presidencia)?</legend>
+				<div class="poll-options">
+					<label class="poll-option"><input type="radio" name="democratic-trust" value="high" required><span>Alta confianza</span></label>
+					<label class="poll-option"><input type="radio" name="democratic-trust" value="moderate"><span>Moderada confianza</span></label>
+					<label class="poll-option"><input type="radio" name="democratic-trust" value="low"><span>Baja confianza</span></label>
+					<label class="poll-option"><input type="radio" name="democratic-trust" value="none"><span>Ninguna confianza</span></label>
+					<label class="poll-option"><input type="radio" name="democratic-trust" value="no-answer"><span>No sabe / No responde</span></label>
+				</div>
+			</fieldset>
+
+			<div class="poll-actions">
+				<button class="poll-submit" type="submit">Enviar respuestas</button>
+				<p class="poll-status" id="poll-status" role="status" aria-live="polite"></p>
+			</div>
+		</form>
+	</main>
+
+	<footer><div class="footer-inner" aria-label="Enlaces de contacto"><a class="footer-link" href="#instagram" aria-label="Instagram">ig</a><a class="footer-link" href="#donaciones" aria-label="Donaciones">$</a><a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">@</a></div></footer>
+	<script>
+		const menuButton = document.querySelector('.menu-toggle');
+		const sideMenu = document.querySelector('#side-menu');
+		const pollForm = document.querySelector('#poll-form');
+		const pollStatus = document.querySelector('#poll-status');
+
+		menuButton.addEventListener('click', (event) => {
+			const isOpen = sideMenu.classList.toggle('open');
+			event.currentTarget.setAttribute('aria-expanded', String(isOpen));
+		});
+
+		pollForm.addEventListener('submit', (event) => {
+			event.preventDefault();
+			pollStatus.textContent = 'Gracias por participar. Tus respuestas fueron registradas.';
+		});
+	</script>
+</body>
+</html>

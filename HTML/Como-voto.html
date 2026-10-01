@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Guía para votar en Argentina - Oíd Mortales">
+	<title>¿Cómo voto? | OÍD MORTALES</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+		:root { --ink:#111318; --paper:#f8f8f5; --yellow:#ffd84d; --blue:#5bc0de; --panel:#dedede; --soft-blue:#ccefff; --muted:#686868; --green:#d9f0df; }
+		* { box-sizing:border-box; }
+		html { scroll-behavior:smooth; }
+		body { margin:0; color:var(--ink); background:var(--paper); font-family:Georgia,"Times New Roman",serif; }
+		button,a,input { font:inherit; }
+		.topbar { display:flex; align-items:stretch; min-height:58px; background:var(--ink); }
+		.menu-toggle { display:grid; width:58px; place-content:center; gap:5px; border:0; border-right:1px solid #333; background:transparent; cursor:pointer; }
+		.menu-toggle span { width:22px; height:2px; background:white; }
+		.tabs { display:grid; grid-template-columns:1fr 1.3fr 1fr; flex:1; }
+		.tab { display:grid; place-items:center; min-height:58px; padding:8px 12px; border:0; border-right:1px solid var(--ink); color:var(--ink); background:white; text-decoration:none; text-align:center; font-weight:700; cursor:pointer; }
+		.tab.blue { background:var(--soft-blue); }
+		.tab.active { background:var(--yellow); }
+		.side-menu { display:none; position:absolute; z-index:3; width:min(300px,88vw); padding:10px 0; border:1px solid var(--ink); border-top:0; background:var(--paper); box-shadow:5px 5px 0 var(--ink); }
+		.side-menu.open { display:block; }
+		.side-menu a { display:block; padding:12px 18px; color:var(--ink); text-decoration:none; border-bottom:1px solid #ccc; }
+		.side-menu a:hover { background:var(--yellow); }
+		.brand-header { padding:24px clamp(20px,5vw,64px) 14px; }
+		.brand-line { display:flex; align-items:center; justify-content:space-between; }
+		.brand { margin:0; font-size:clamp(1rem,2vw,1.35rem); letter-spacing:.12em; font-weight:700; }
+		.profile { width:38px; height:38px; border:1px solid var(--ink); border-radius:50%; background:white; }
+		.profile::before,.profile::after { content:""; display:block; margin:auto; border:1.5px solid var(--ink); }
+		.profile::before { width:9px; height:9px; margin-top:7px; border-radius:50%; }
+		.profile::after { width:18px; height:9px; margin-top:3px; border-radius:12px 12px 0 0; border-bottom:0; }
+		h1 { margin:28px 0 18px; font-size:clamp(2rem,4vw,3rem); line-height:1; }
+		main { padding:0 clamp(20px,5vw,64px) 100px; }
+		.intro { display:flex; align-items:center; min-height:106px; margin-bottom:26px; padding:22px clamp(20px,4vw,42px); border-radius:2px; background:var(--panel); }
+		.intro p { max-width:680px; margin:0; font-size:clamp(1rem,2vw,1.2rem); line-height:1.35; }
+		.guide { display:grid; gap:16px; max-width:960px; margin:0 auto; }
+		.guide-card { display:grid; grid-template-columns:minmax(150px,.42fr) 1fr; gap:24px; align-items:center; padding:22px; border:1px solid var(--ink); border-radius:14px; background:white; }
+		.guide-visual { display:flex; align-items:center; justify-content:center; margin:0; }
+		.guide-visual img { display:block; width:100%; max-width:280px; height:auto; border-radius:16px; }
+		.guide-copy { min-width:0; }
+		.card-heading { display:flex; align-items:flex-start; gap:16px; margin-bottom:16px; }
+		.step-number { display:grid; flex:0 0 38px; width:38px; height:38px; place-items:center; border:1px solid var(--ink); border-radius:50%; background:var(--yellow); font-size:1.1rem; font-weight:700; }
+		.card-heading h2 { margin:4px 0 0; font-size:clamp(1.15rem,2vw,1.4rem); line-height:1.15; }
+		.guide-card p { margin:0; color:#383838; line-height:1.45; }
+		.search-form { display:flex; gap:10px; margin-top:18px; }
+		.search-form label { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
+		.search-form input { min-width:0; flex:1; padding:11px 13px; border:1px solid var(--ink); border-radius:5px; color:var(--ink); background:var(--paper); }
+		.search-form button,.external-link { display:inline-block; padding:10px 14px; border:1px solid var(--ink); border-radius:5px; color:var(--ink); background:var(--blue); text-decoration:none; font-weight:700; cursor:pointer; }
+		.search-form button:hover,.external-link:hover,.search-form button:focus-visible,.external-link:focus-visible { background:var(--yellow); outline:none; }
+		.search-result { display:none; margin-top:12px; padding:10px 12px; border-left:4px solid var(--blue); background:var(--green); }
+		.search-result.visible { display:block; }
+		.document-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin:18px 0 0; padding:0; list-style:none; }
+		.document-list li { padding:12px 14px; border:1px solid #bdbdbd; border-radius:8px; background:var(--paper); }
+		.document-list strong { display:block; margin-bottom:3px; }
+		.steps { display:grid; gap:12px; margin:18px 0 0; padding:0; list-style:none; counter-reset:vote-step; }
+		.steps li { display:flex; gap:12px; align-items:flex-start; counter-increment:vote-step; }
+		.steps li::before { content:counter(vote-step); display:grid; flex:0 0 26px; width:26px; height:26px; place-items:center; border-radius:50%; color:white; background:var(--ink); font-size:.85rem; font-weight:700; }
+		.steps li span { padding-top:3px; line-height:1.35; }
+		footer { display:flex; justify-content:center; padding:16px 20px 22px; }
+		.footer-inner { display:flex; justify-content:center; gap:30px; width:min(100%,960px); padding:15px; border-radius:16px; background:#000; }
+		.footer-link { display:grid; width:34px; height:34px; place-items:center; border:1px solid white; border-radius:50%; color:white; text-decoration:none; font-size:.85rem; }
+		@media (max-width:620px) {
+			.topbar { min-height:52px; }.menu-toggle { width:48px; }.tab { min-height:52px; padding:7px 5px; font-size:.78rem; }
+			.brand-header { padding-top:20px; }.intro { min-height:94px; padding:18px 20px; }.guide { gap:12px; }.guide-card { grid-template-columns:1fr; gap:16px; padding:16px; }.guide-visual img { max-width:240px; }
+			.search-form { flex-direction:column; }.search-form button { width:100%; }.document-list { grid-template-columns:1fr; } main { padding-bottom:60px; }
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav class="topbar" aria-label="Navegación principal">
+			<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu"><span></span><span></span><span></span></button>
+			<div class="tabs"><a class="tab blue" href="partidos.html">Partidos</a><a class="tab" href="debates.html">Debates actuales</a><a class="tab active" href="como-voto.html" aria-current="page">¿Cómo voto?</a></div>
+		</nav>
+		<div class="side-menu" id="side-menu"><a href="index.html">Inicio</a><a href="partidos.html">Partidos</a><a href="debates.html">Debates actuales</a><a href="como-voto.html">¿Cómo voto?</a></div>
+		<div class="brand-header"><div class="brand-line"><p class="brand">OÍD MORTALES</p><a class="profile" href="#perfil" aria-label="Perfil de usuario"></a></div><h1>¿Cómo voto?</h1></div>
+	</header>
+	<main>
+		<section class="intro" aria-label="Introducción a la guía"><p>Todo lo que necesitás saber para votar de forma simple, informada y segura.</p></section>
+		<section class="guide" aria-label="Guía para votar">
+			<article class="guide-card" id="donde-voto">
+				<figure class="guide-visual"><img src="ilustracion-padron.svg" alt="Mapa con ubicación y urna electoral"></figure>
+				<div class="guide-copy"><div class="card-heading"><span class="step-number">1</span><h2>¿Dónde voto?</h2></div>
+				<p>Consultá el padrón electoral para conocer tu establecimiento, mesa y número de orden.</p>
+				<form class="search-form" id="padron-form"><label for="dni">Ingresá tu DNI</label><input id="dni" name="dni" type="text" inputmode="numeric" placeholder="Número de DNI" required><button type="submit">Consultar padrón</button></form>
+				<a class="external-link" href="https://www.padron.gov.ar/" target="_blank" rel="noopener noreferrer">Abrir padrón oficial</a>
+				<p class="search-result" id="search-result" role="status"></p></div>
+			</article>
+			<article class="guide-card" id="documentos-validos">
+				<figure class="guide-visual"><img src="ilustracion-documentos.svg" alt="DNI tarjeta y documento de identidad"></figure>
+				<div class="guide-copy"><div class="card-heading"><span class="step-number">2</span><h2>Documentos válidos</h2></div>
+				<p>Presentá el documento que figura en el padrón o una versión posterior. Debe ser el original, no una fotocopia.</p>
+				<ul class="document-list"><li><strong>DNI tarjeta</strong>Ejemplar vigente o posterior.</li><li><strong>DNI libreta</strong>Libreta cívica o de enrolamiento.</li></ul></div>
+			</article>
+			<article class="guide-card" id="dia-eleccion">
+				<figure class="guide-visual"><img src="ilustracion-eleccion.svg" alt="Persona depositando un sobre en una urna"></figure>
+				<div class="guide-copy"><div class="card-heading"><span class="step-number">3</span><h2>El día de la elección</h2></div>
+				<ol class="steps"><li><span>Buscá tu mesa y presentá tu DNI a la autoridad.</span></li><li><span>Ingresá al cuarto oscuro y elegí tu boleta.</span></li><li><span>Depositá el sobre en la urna y firmá el padrón.</span></li><li><span>Retirá tu constancia de voto antes de retirarte.</span></li></ol></div>
+			</article>
+		</section>
+	</main>
+	<footer><div class="footer-inner" aria-label="Enlaces de contacto"><a class="footer-link" href="#instagram" aria-label="Instagram">ig</a><a class="footer-link" href="#donaciones" aria-label="Donaciones">$</a><a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">@</a></div></footer>
+	<script>
+		const menuButton = document.querySelector('.menu-toggle');
+		const sideMenu = document.querySelector('#side-menu');
+		const padronForm = document.querySelector('#padron-form');
+		const searchResult = document.querySelector('#search-result');
+		menuButton.addEventListener('click', () => { const isOpen = sideMenu.classList.toggle('open'); menuButton.setAttribute('aria-expanded', String(isOpen)); });
+		padronForm.addEventListener('submit', (event) => { event.preventDefault(); searchResult.textContent = 'Consulta preparada. Para conocer tu lugar de votación, verificá tus datos en el padrón oficial.'; searchResult.classList.add('visible'); });
+	</script>
+</body>
+</html>

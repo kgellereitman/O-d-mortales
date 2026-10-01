@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Partidos políticos de Argentina - Oíd Mortales">
+	<title>Partidos políticos | OÍD MORTALES</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+		:root { --ink:#111318; --paper:#f8f8f5; --yellow:#ffd84d; --blue:#ccefff; --panel:#dedede; }
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; }
+		body { margin:0; color:var(--ink); background:var(--paper); font-family:Georgia,"Times New Roman",serif; }
+		button,a { font:inherit; }
+		.topbar { display:flex; align-items:stretch; min-height:58px; background:var(--ink); }
+		.menu-toggle { display:grid; width:58px; place-content:center; gap:5px; border:0; border-right:1px solid #333; background:transparent; cursor:pointer; }
+		.menu-toggle span { width:22px; height:2px; background:white; }
+		.tabs { display:grid; grid-template-columns:1fr 1.3fr 1fr; flex:1; }
+		.tab { display:grid; place-items:center; min-height:58px; padding:8px 12px; border:0; border-right:1px solid var(--ink); color:var(--ink); background:white; text-decoration:none; text-align:center; font-weight:700; cursor:pointer; }
+		.tab.active { background:var(--yellow); }
+		.tab.blue { background:var(--blue); }
+		.side-menu { display:none; position:absolute; z-index:3; width:min(300px,88vw); padding:10px 0; border:1px solid var(--ink); border-top:0; background:var(--paper); box-shadow:5px 5px 0 var(--ink); }
+		.side-menu.open { display:block; }
+		.side-menu a { display:block; padding:12px 18px; color:var(--ink); text-decoration:none; border-bottom:1px solid #ccc; }
+		.side-menu a:hover { background:var(--yellow); }
+		.brand-header { padding:24px clamp(20px,5vw,64px) 14px; }
+		.brand-line { display:flex; align-items:center; justify-content:space-between; }
+		.brand { margin:0; font-size:clamp(1rem,2vw,1.35rem); letter-spacing:.12em; font-weight:700; }
+		.profile { width:38px; height:38px; border:1px solid var(--ink); border-radius:50%; background:white; }
+		.profile::before,.profile::after { content:""; display:block; margin:auto; border:1.5px solid var(--ink); }
+		.profile::before { width:9px; height:9px; margin-top:7px; border-radius:50%; }
+		.profile::after { width:18px; height:9px; margin-top:3px; border-radius:12px 12px 0 0; border-bottom:0; }
+		h1 { margin:28px 0 18px; font-size:clamp(2rem,4vw,3rem); line-height:1; }
+		main { padding:0 clamp(20px,5vw,64px) 100px; }
+		.feature { min-height:136px; margin-bottom:26px; border-radius:2px; background:var(--panel); }
+		.party-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; max-width:960px; margin:0 auto; }
+		.party-card { display:flex; align-items:center; gap:18px; min-height:120px; padding:18px; border:1px solid var(--ink); border-radius:14px; color:var(--ink); background:white; text-decoration:none; transition:transform .2s ease,box-shadow .2s ease; }
+		.party-card:hover,.party-card:focus-visible { transform:translateY(-3px); box-shadow:4px 4px 0 var(--ink); outline:none; }
+		.party-logo { display:grid; flex:0 0 66px; width:66px; height:66px; place-items:center; border-radius:10px; color:white; font-size:1.1rem; font-weight:700; text-align:center; }
+		.jxc{background:#2878b9}.up{background:#c9342d}.fi{background:#923a9f}.mas{background:#129961}.lds{background:#e69a18}.pyv{background:#418ec6}.po{background:#686868}.other{background:#252525}
+		.party-name { margin:0; font-size:clamp(1rem,2vw,1.2rem); line-height:1.15; }
+		footer { display:flex; justify-content:center; padding:16px 20px 22px; }
+		.footer-inner { display:flex; justify-content:center; gap:30px; width:min(100%,960px); padding:15px; border-radius:16px; background:#000; }
+		.footer-link { display:grid; width:34px; height:34px; place-items:center; border:1px solid white; border-radius:50%; color:white; text-decoration:none; font-size:.85rem; }
+		@media (max-width:620px) {
+			.topbar { min-height:52px; }.menu-toggle { width:48px; }.tab { min-height:52px; padding:7px 5px; font-size:.78rem; }
+			.brand-header { padding-top:20px; }.feature { min-height:94px; }.party-grid { grid-template-columns:1fr; gap:12px; }
+			.party-card { min-height:92px; padding:13px; }.party-logo { flex-basis:56px; width:56px; height:56px; } main { padding-bottom:60px; }
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<nav class="topbar" aria-label="Navegación principal">
+			<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu"><span></span><span></span><span></span></button>
+			<div class="tabs"><a class="tab active" href="#partidos" aria-current="page">Partidos</a><a class="tab" href="debates.html">Debates actuales</a><a class="tab blue" href="como-voto.html">¿Cómo voto?</a></div>
+		</nav>
+		<div class="side-menu" id="side-menu"><a href="#partidos">Partidos</a><a href="debates.html">Debates actuales</a><a href="como-voto.html">¿Cómo voto?</a></div>
+		<div class="brand-header"><div class="brand-line"><p class="brand">OÍD MORTALES</p><a class="profile" href="#perfil" aria-label="Perfil de usuario"></a></div><h1 id="partidos">Partidos políticos</h1></div>
+	</header>
+	<main>
+		<section class="feature" aria-label="Contenido destacado"></section>
+		<section class="party-grid" aria-label="Partidos políticos">
+			<a class="party-card" href="#jxc"><span class="party-logo jxc">JxC</span><h2 class="party-name">Juntos por el Cambio</h2></a>
+			<a class="party-card" href="#up"><span class="party-logo up">UP</span><h2 class="party-name">Unión por la Patria</h2></a>
+			<a class="party-card" href="#fi"><span class="party-logo fi">FI</span><h2 class="party-name">Frente de Izquierda</h2></a>
+			<a class="party-card" href="#mas"><span class="party-logo mas">MAS</span><h2 class="party-name">Nuevo MAS</h2></a>
+			<a class="party-card" href="#lds"><span class="party-logo lds">LdS</span><h2 class="party-name">Libres del Sur</h2></a>
+			<a class="party-card" href="#pyv"><span class="party-logo pyv">PyV</span><h2 class="party-name">Principios y Valores</h2></a>
+			<a class="party-card" href="#po"><span class="party-logo po">PO</span><h2 class="party-name">Política Obrera</h2></a>
+			<a class="party-card" href="#otras"><span class="party-logo other">OT</span><h2 class="party-name">Otras agrupaciones</h2></a>
+		</section>
+	</main>
+	<footer><div class="footer-inner" aria-label="Enlaces de contacto"><a class="footer-link" href="#instagram" aria-label="Instagram">ig</a><a class="footer-link" href="#donaciones" aria-label="Donaciones">$</a><a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">@</a></div></footer>
+	<script>
+		const menuButton = document.querySelector('.menu-toggle');
+		const sideMenu = document.querySelector('#side-menu');
+		menuButton.addEventListener('click', () => { const isOpen = sideMenu.classList.toggle('open'); menuButton.setAttribute('aria-expanded', String(isOpen)); });
+	</script>
+</body>
+</html>
+<html lang="es">

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Cómo funciona el Estado argentino - Oíd Mortales.">
+	<title>¿Cómo funciona el estado? | OÍD MORTALES</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body class="state-page">
+	<header class="site-header">
+		<nav class="topbar" aria-label="Navegación principal">
+			<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu"><span></span><span></span><span></span></button>
+			<div class="tabs">
+				<a class="tab blue" href="Partidos.html">Partidos</a>
+				<a class="tab" href="Debates.html">Debates actuales</a>
+				<a class="tab blue" href="Como-voto.html">¿Cómo voto?</a>
+			</div>
+		</nav>
+		<div class="side-menu" id="side-menu">
+			<a href="Index.html">Inicio</a><a href="Partidos.html">Partidos</a><a href="Debates.html">Debates actuales</a><a href="Como-voto.html">¿Cómo voto?</a>
+		</div>
+		<div class="brand-header state-header">
+			<div class="brand-line"><p class="brand">OÍD MORTALES</p><a class="profile" href="#perfil" aria-label="Perfil de usuario"></a></div>
+			<h1>¿Cómo funciona el estado?</h1>
+		</div>
+	</header>
+
+	<main class="state-main">
+		<section class="video-panel" aria-label="Video explicativo">
+			<div class="video-frame" role="img" aria-label="Reproductor de video explicativo pendiente de reproducción">
+				<span class="video-camera" aria-hidden="true"><span></span></span>
+				<span class="video-label">Video explicativo</span>
+			</div>
+		</section>
+
+		<section class="state-content" aria-label="Información sobre el Estado argentino">
+			<p class="state-intro">El Estado argentino organiza la vida en sociedad dentro de su territorio, garantizando derechos, orden y bienestar.</p>
+
+			<article class="state-section">
+				<h2><span aria-hidden="true">⚖</span> División de poderes</h2>
+				<ul>
+					<li><strong>Ejecutivo:</strong> Presidente y ministros, aplican las leyes.</li>
+					<li><strong>Legislativo:</strong> Congreso (Senado y Diputados), crean las leyes.</li>
+					<li><strong>Judicial:</strong> Jueces y Corte Suprema, interpretan y hacen cumplir las leyes.</li>
+				</ul>
+			</article>
+
+			<article class="state-section">
+				<h2><span aria-hidden="true">🏛</span> Sistema federal</h2>
+				<ul>
+					<li>23 provincias + Ciudad Autónoma de Buenos Aires.</li>
+					<li>Cada provincia tiene su propia Constitución, gobernador y legislatura.</li>
+					<li>El gobierno nacional coordina políticas generales.</li>
+				</ul>
+			</article>
+
+			<article class="state-section">
+				<h2><span aria-hidden="true">📌</span> Funciones principales</h2>
+				<ul>
+					<li>Proteger derechos y libertades.</li>
+					<li>Mantener seguridad y justicia.</li>
+					<li>Promover educación, salud y desarrollo.</li>
+					<li>Representar al país en el mundo.</li>
+				</ul>
+			</article>
+		</section>
+	</main>
+
+	<footer><div class="footer-inner" aria-label="Enlaces de contacto"><a class="footer-link" href="#instagram" aria-label="Instagram">ig</a><a class="footer-link" href="#donaciones" aria-label="Donaciones">$</a><a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">@</a></div></footer>
+	<script>
+		const menuButton = document.querySelector('.menu-toggle');
+		const sideMenu = document.querySelector('#side-menu');
+		menuButton.addEventListener('click', (event) => {
+			const isOpen = sideMenu.classList.toggle('open');
+			event.currentTarget.setAttribute('aria-expanded', String(isOpen));
+		});
+	</script>
+</body>
+</html>

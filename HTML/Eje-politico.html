@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Eje político de Horacio Rodríguez Larreta - Oíd Mortales">
+	<title>Eje político | OÍD MORTALES</title>
+	<link rel="stylesheet" href="../style.css">
+	<style>
+		:root { --purple:#8d6bb8; --light-purple:#ddcff0; --axis-blue:#9edff2; --red:#d55a56; --muted:#5f6268; }
+		.axis-page { min-height:100vh; }
+		.axis-page .topbar { min-height:58px; }
+		.axis-page .menu-toggle { cursor:pointer; }
+		.axis-page .tab { cursor:pointer; }
+		.axis-page .tab.active { background:var(--blue); }
+		.axis-page .axis-header { padding-bottom:24px; }
+		.axis-page h1 { margin-bottom:0; }
+		.axis-main { max-width:1060px; margin:0 auto; padding-bottom:72px; }
+		.candidate-summary { display:grid; grid-template-columns:minmax(210px,.75fr) 1.25fr; gap:28px; align-items:center; margin-bottom:34px; }
+		.candidate-card { display:flex; align-items:center; gap:18px; min-width:0; }
+		.candidate-photo { display:block; flex:0 0 112px; width:112px; height:112px; border:2px solid var(--ink); border-radius:50%; object-fit:cover; object-position:center; background:var(--blue); }
+		.candidate-details { min-width:0; }
+		.candidate-details p { margin:0 0 8px; line-height:1.25; }
+		.candidate-details p:last-child { margin-bottom:0; }
+		.candidate-details strong { display:block; margin-bottom:2px; font-size:.84rem; text-transform:uppercase; letter-spacing:.08em; }
+		.candidate-details span { font-size:clamp(1rem,2vw,1.2rem); font-weight:700; }
+		.editorial-note { margin:0; padding:20px 22px; border:2px solid var(--red); border-radius:16px; background:#fff; font-size:clamp(.95rem,1.6vw,1.08rem); line-height:1.42; }
+		.editorial-note::before { content:"Nota editorial"; display:block; margin-bottom:8px; color:var(--red); font-size:.78rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+		.axis-list { display:grid; gap:20px; }
+		.axis-item { padding:20px 22px 18px; border:1px solid var(--ink); border-radius:14px; background:#fff; }
+		.axis-item:nth-child(4n + 1) { background:#fff1b8; }
+		.axis-item:nth-child(4n + 2) { background:#d9f0df; }
+		.axis-item:nth-child(4n + 3) { background:#ccefff; }
+		.axis-item:nth-child(4n) { background:#e8edcf; }
+		.axis-title { display:flex; align-items:center; justify-content:center; gap:7px; margin:0 0 17px; font-size:clamp(1.05rem,2vw,1.3rem); line-height:1.1; text-align:center; }
+		.info { display:inline-grid; width:18px; height:18px; place-items:center; border:1px solid currentColor; border-radius:50%; font-family:Arial,sans-serif; font-size:.72rem; font-weight:700; }
+		.axis-scale { display:grid; grid-template-columns:minmax(120px,1fr) minmax(220px,2fr) minmax(120px,1fr); gap:14px; align-items:center; }
+		.axis-label { font-size:.92rem; line-height:1.18; }
+		.axis-label:last-child { text-align:right; }
+		.axis-track { position:relative; height:14px; border:1px solid var(--ink); border-radius:999px; background:linear-gradient(90deg,var(--purple) 0 50%,var(--axis-blue) 50% 100%); }
+		.axis-track::before { content:""; position:absolute; inset:5px 8px; border-top:1px dashed rgba(17,19,24,.7); }
+		.axis-track::after { content:""; position:absolute; top:50%; left:50%; width:24px; height:24px; border:2px solid var(--ink); border-radius:50%; background:#fff; transform:translate(-50%,-50%); box-shadow:0 0 0 3px rgba(255,255,255,.55); }
+		.axis-caption { display:block; margin-top:10px; color:var(--muted); font-size:.75rem; text-align:center; }
+		.axis-page footer { padding-top:0; }
+		@media (max-width:720px) {
+			.axis-main { padding-bottom:48px; }
+			.candidate-summary { grid-template-columns:1fr; gap:18px; margin-bottom:26px; }
+			.candidate-card { align-items:flex-start; }
+			.candidate-photo { flex-basis:92px; width:92px; height:92px; }
+			.editorial-note { padding:16px 18px; }
+			.axis-list { gap:14px; }
+			.axis-item { padding:17px 15px 15px; }
+			.axis-scale { grid-template-columns:1fr 2fr 1fr; gap:8px; }
+			.axis-label { font-size:.78rem; }
+			.axis-track { height:12px; }
+			.axis-track::after { width:20px; height:20px; }
+		}
+		@media (max-width:420px) {
+			.axis-scale { grid-template-columns:1fr; gap:8px; }
+			.axis-label:last-child { text-align:left; }
+			.axis-track { grid-row:2; }
+			.axis-caption { display:none; }
+		}
+	</style>
+</head>
+<body class="axis-page">
+	<header class="site-header">
+		<nav class="topbar" aria-label="Navegación principal">
+			<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu"><span></span><span></span><span></span></button>
+			<div class="tabs">
+				<a class="tab active" href="partidos.html">Partidos</a>
+				<a class="tab" href="debates.html">Debates actuales</a>
+				<a class="tab blue" href="como-voto.html">¿Cómo voto?</a>
+			</div>
+		</nav>
+		<div class="side-menu" id="side-menu">
+			<a href="index.html">Inicio</a><a href="partidos.html">Partidos</a><a href="debates.html">Debates actuales</a><a href="como-voto.html">¿Cómo voto?</a>
+		</div>
+		<div class="brand-header axis-header">
+			<div class="brand-line"><p class="brand">OÍD MORTALES</p><a class="profile" href="#perfil" aria-label="Perfil de usuario"></a></div>
+			<h1>Eje político</h1>
+		</div>
+	</header>
+
+	<main class="axis-main">
+		<section class="candidate-summary" aria-label="Perfil del candidato">
+			<div class="candidate-card">
+				<img class="candidate-photo" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=320&q=85" alt="Retrato de referencia de Horacio Rodríguez Larreta">
+				<div class="candidate-details">
+					<p><strong>Partido</strong><span>JxC</span></p>
+					<p><strong>Presidente</strong><span>Horacio Rodríguez Larreta</span></p>
+				</div>
+			</div>
+			<p class="editorial-note">Los ejes no necesariamente representan izquierda y derecha. Si encontrás problemas en la información presentada, no dudes en tener un debate con nosotros o sugerirlo.</p>
+		</section>
+
+		<section class="axis-list" aria-label="Ejes temáticos de la posición política">
+			<article class="axis-item"><h2 class="axis-title">Economía <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Más control</span><div class="axis-track" role="img" aria-label="Posición central entre más control y más mercado"></div><span class="axis-label">Más mercado</span></div><small class="axis-caption">Posición del candidato</small></article>
+			<article class="axis-item"><h2 class="axis-title">Derechos laborales <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Proteccionismo</span><div class="axis-track" role="img" aria-label="Posición central entre proteccionismo y flexibilización"></div><span class="axis-label">Flexibilización</span></div><small class="axis-caption">Posición del candidato</small></article>
+			<article class="axis-item"><h2 class="axis-title">Medio ambiente <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Regulación/Protección</span><div class="axis-track" role="img" aria-label="Posición central entre regulación y desarrollo"></div><span class="axis-label">Desarrollo/Explotación</span></div><small class="axis-caption">Posición del candidato</small></article>
+			<article class="axis-item"><h2 class="axis-title">Defensa y seguridad <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Garantismo/Prevención</span><div class="axis-track" role="img" aria-label="Posición central entre garantismo y mano dura"></div><span class="axis-label">Mano dura/Proactiva</span></div><small class="axis-caption">Posición del candidato</small></article>
+			<article class="axis-item"><h2 class="axis-title">Derechos humanos <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Memoria</span><div class="axis-track" role="img" aria-label="Posición central entre memoria y soberanía"></div><span class="axis-label">Soberanía</span></div><small class="axis-caption">Posición del candidato</small></article>
+			<article class="axis-item"><h2 class="axis-title">Globalización vs soberanía <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Enfoque nacional</span><div class="axis-track" role="img" aria-label="Posición central entre enfoque nacional e integración global"></div><span class="axis-label">Integración global</span></div><small class="axis-caption">Posición del candidato</small></article>
+			<article class="axis-item"><h2 class="axis-title">Estado vs mercado <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Presencia estatal</span><div class="axis-track" role="img" aria-label="Posición central entre presencia estatal y libre mercado"></div><span class="axis-label">Libre mercado</span></div><small class="axis-caption">Posición del candidato</small></article>
+			<article class="axis-item"><h2 class="axis-title">Políticas sociales <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Universalización</span><div class="axis-track" role="img" aria-label="Posición central entre universalización y focalización"></div><span class="axis-label">Focalización</span></div><small class="axis-caption">Posición del candidato</small></article>
+			<article class="axis-item"><h2 class="axis-title">Sindicatos <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Autonomía</span><div class="axis-track" role="img" aria-label="Posición central entre autonomía y regulación"></div><span class="axis-label">Regulación</span></div><small class="axis-caption">Posición del candidato</small></article>
+			<article class="axis-item"><h2 class="axis-title">Política exterior <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Multilateralismo</span><div class="axis-track" role="img" aria-label="Posición central entre multilateralismo y alineación estratégica"></div><span class="axis-label">Alineación estratégica</span></div><small class="axis-caption">Posición del candidato</small></article>
+			<article class="axis-item"><h2 class="axis-title">Migración <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Humanitaria/Abierta</span><div class="axis-track" role="img" aria-label="Posición central entre una migración humanitaria y el control"></div><span class="axis-label">Control/Restricciones</span></div><small class="axis-caption">Posición del candidato</small></article>
+			<article class="axis-item"><h2 class="axis-title">Igualdad de género <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Agenda inclusiva</span><div class="axis-track" role="img" aria-label="Posición central entre agenda inclusiva y tradicional"></div><span class="axis-label">Tradicional</span></div><small class="axis-caption">Posición del candidato</small></article>
+			<article class="axis-item"><h2 class="axis-title">Corrupción <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Institucionalismo</span><div class="axis-track" role="img" aria-label="Posición central entre institucionalismo y transparencia"></div><span class="axis-label">Transparencia</span></div><small class="axis-caption">Posición del candidato</small></article>
+		</section>
+	</main>
+
+	<footer><div class="footer-inner" aria-label="Enlaces de contacto"><a class="footer-link" href="#instagram" aria-label="Instagram">ig</a><a class="footer-link" href="#donaciones" aria-label="Donaciones">$</a><a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">@</a></div></footer>
+	<script>
+		const menuButton = document.querySelector('.menu-toggle');
+		const sideMenu = document.querySelector('#side-menu');
+		menuButton.addEventListener('click', () => { const isOpen = sideMenu.classList.toggle('open'); menuButton.setAttribute('aria-expanded', String(isOpen)); });
+	</script>
+</body>
+</html>

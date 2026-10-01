@@ -1,0 +1,74 @@
+git add "data provincial"
+git commit -m "Initial project commit"
+git push -u origin main<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Oíd Mortales: inicio e información política de Argentina.">
+  <title>Inicio | OÍD MORTALES</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="topbar" aria-label="Navegación principal">
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="tabs">
+        <a class="tab blue" href="partidos.html">Partidos</a>
+        <a class="tab" href="debates.html">Debates actuales</a>
+        <a class="tab blue" href="como-voto.html">¿Cómo voto?</a>
+      </div>
+    </nav>
+    <div class="side-menu" id="side-menu">
+      <a href="index.html">Inicio</a>
+      <a href="partidos.html">Partidos</a>
+      <a href="debates.html">Debates actuales</a>
+      <a href="como-voto.html">¿Cómo voto?</a>
+    </div>
+    <div class="brand-header start-header">
+      <div class="brand-line">
+        <p class="brand">OÍD MORTALES</p>
+        <a class="profile" href="#perfil" aria-label="Perfil de usuario"></a>
+      </div>
+      <h1 id="inicio">Inicio</h1>
+    </div>
+  </header>
+
+  <main class="start-main">
+    <section class="section-list" aria-label="Secciones del sitio">
+      <a class="section-link section-card" id="partidos" href="partidos.html"><h2>Partidos</h2><p>Información clara sobre los principales partidos políticos de Argentina, sus propuestas y su historia.</p></a>
+      <a class="section-link section-card" id="debates" href="debates.html"><h2>Debates actuales</h2><p>Un lugar para seguir las discusiones más relevantes de la política argentina, con análisis y opiniones diversas.</p></a>
+      <a class="section-link section-card" id="como-voto" href="como-voto.html"><h2>¿Cómo voto?</h2><p>Guía práctica sobre el sistema electoral argentino: pasos, requisitos y consejos para ejercer tu derecho al voto.</p></a>
+      <a class="section-link" id="eje-politico" href="#eje-politico"><h2>Eje político</h2><p>Explicación de las principales corrientes ideológicas y cómo influyen en la política nacional.</p></a>
+      <a class="section-link" id="calendario" href="#calendario"><h2>Calendario</h2><p>Agenda de elecciones, debates, eventos políticos y fechas clave en Argentina.</p></a>
+      <a class="section-link" id="encuestas" href="#encuestas"><h2>Encuestas</h2><p>Resultados y participación en encuestas sobre temas políticos y sociales de actualidad.</p></a>
+      <a class="section-link" id="estado" href="#estado"><h2>¿Cómo funciona el estado?</h2><p>Resumen dinámico sobre la organización del Estado argentino y sus poderes.</p></a>
+      <a class="section-link" id="memes" href="#memes"><h2>Memes</h2><p>Espacio para el humor político, con contenido creativo que refleja la realidad desde otra mirada.</p></a>
+      <a class="section-link" id="foro" href="#foro"><h2>Foro político</h2><p>Comunidad abierta para debatir ideas, compartir opiniones y dialogar sobre el futuro del país.</p></a>
+      <a class="section-link" id="mapa" href="#mapa"><h2>Mapa político</h2><p>Visualización interactiva de provincias, partidos y distribución del poder en Argentina.</p></a>
+      <a class="section-link" id="noticias" href="#noticias"><h2>Noticias</h2><p>Actualidad política nacional e internacional, con información confiable y actualizada.</p></a>
+      <a class="section-link" id="configuracion" href="#configuracion"><h2>Configuración</h2><p>Opciones para personalizar tu experiencia en la página: idioma, notificaciones y preferencias.</p></a>
+      <a class="section-link" id="quienes-somos" href="#quienes-somos"><h2>Quienes somos</h2><p>Presentamos nuestra misión y valores. Un espacio para conocer quiénes impulsan el proyecto y por qué creemos en la participación de todos.</p></a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner" aria-label="Enlaces de contacto">
+      <a class="footer-link" href="#instagram" aria-label="Instagram">ig</a>
+      <a class="footer-link" href="#donaciones" aria-label="Donaciones">$</a>
+      <a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">@</a>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const sideMenu = document.querySelector('#side-menu');
+    menuButton.addEventListener('click', () => {
+      const isOpen = sideMenu.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+    });
+  </script>
+</body>
+</html>

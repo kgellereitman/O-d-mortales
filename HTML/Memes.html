@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Memes y humor político de Oíd Mortales.">
+	<title>Memes | OÍD MORTALES</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body class="memes-page">
+	<header class="site-header">
+		<nav class="topbar" aria-label="Navegación principal">
+			<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu"><span></span><span></span><span></span></button>
+			<div class="tabs">
+				<a class="tab blue" href="Partidos.html">Partidos</a>
+				<a class="tab" href="Debates.html">Debates actuales</a>
+				<a class="tab blue" href="Como-voto.html">¿Cómo voto?</a>
+			</div>
+		</nav>
+		<div class="side-menu" id="side-menu">
+			<a href="Index.html">Inicio</a><a href="Partidos.html">Partidos</a><a href="Debates.html">Debates actuales</a><a href="Como-voto.html">¿Cómo voto?</a>
+		</div>
+		<div class="brand-header memes-header">
+			<div class="brand-line"><p class="brand">OÍD MORTALES</p><a class="profile" href="#perfil" aria-label="Perfil de usuario"></a></div>
+			<h1>Memes</h1>
+		</div>
+	</header>
+
+	<main class="memes-main">
+		<section class="meme-feed" aria-label="Galería de memes políticos">
+			<article class="meme-card meme-card-purple">
+				<div class="meme-art history-meme" role="img" aria-label="Meme sobre una clase de historia y la coyuntura política">
+					<div class="history-speech">Profe de historia:<br><strong>“Esto ya pasó antes”</strong></div>
+					<div class="history-character" aria-hidden="true"><span class="history-head"></span><span class="history-body"></span></div>
+					<div class="history-caption">La coyuntura política, otra vez:</div>
+				</div>
+				<p class="meme-caption">Cuando el presente se parece demasiado al programa de la materia.</p>
+			</article>
+
+			<article class="meme-card meme-card-cyan tweet-card">
+				<header class="tweet-header">
+					<div class="tweet-avatar" aria-hidden="true">L</div>
+					<div class="tweet-author"><strong>Lucía Fernández</strong><span>@Lucfxxxx</span></div>
+					<button class="follow-button" type="button" aria-pressed="false">Seguir</button>
+				</header>
+				<p class="tweet-copy">El debate presidencial en una imagen.<br><span>#DebatePresidencial #Argentina</span></p>
+				<div class="tweet-image" role="img" aria-label="Ilustración de un debate presidencial"><span>DEBATE<br><strong>EN VIVO</strong></span><i aria-hidden="true"></i></div>
+				<footer class="tweet-meta"><time datetime="2023-10-01T21:42">21:42 · 1 oct. 2023</time><div class="tweet-metrics"><span>↻ 132</span><span>◇ 28</span><span>♡ 1.2 mil</span></div></footer>
+			</article>
+
+			<div class="meme-pair meme-card meme-card-purple" aria-label="Dos memes destacados">
+				<article class="square-meme adorni-meme">
+					<div class="adorni-portrait" aria-hidden="true"><span></span></div>
+					<p>“No hay plata”<br><strong>pero hay memes</strong></p>
+				</article>
+				<article class="square-meme laser-meme">
+					<div class="laser-eyes" aria-hidden="true"><span></span><span></span></div>
+					<p>Cuando te explican<br><strong>el presupuesto</strong></p>
+				</article>
+			</div>
+		</section>
+	</main>
+
+	<footer><div class="footer-inner" aria-label="Enlaces de contacto"><a class="footer-link" href="#instagram" aria-label="Instagram">ig</a><a class="footer-link" href="#donaciones" aria-label="Donaciones">$</a><a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">@</a></div></footer>
+	<script>
+		const menuButton = document.querySelector('.menu-toggle');
+		const sideMenu = document.querySelector('#side-menu');
+		const followButton = document.querySelector('.follow-button');
+		menuButton.addEventListener('click', (event) => {
+			const isOpen = sideMenu.classList.toggle('open');
+			event.currentTarget.setAttribute('aria-expanded', String(isOpen));
+		});
+		followButton.addEventListener('click', () => {
+			const isFollowing = followButton.getAttribute('aria-pressed') === 'true';
+			followButton.setAttribute('aria-pressed', String(!isFollowing));
+			followButton.textContent = isFollowing ? 'Seguir' : 'Siguiendo';
+		});
+	</script>
+</body>
+</html>
