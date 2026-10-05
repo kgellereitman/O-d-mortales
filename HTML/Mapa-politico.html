@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Explorá las provincias y la organización política de Argentina en Oíd Mortales.">
+	<title>Mapa político | OÍD MORTALES</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body class="map-page">
+	<header class="site-header">
+		<nav class="topbar" aria-label="Navegación principal">
+			<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu">
+				<span></span><span></span><span></span>
+			</button>
+			<div class="tabs">
+				<a class="tab blue" href="Partidos.html">Partidos</a>
+				<a class="tab" href="Debates.html">Debates actuales</a>
+				<a class="tab blue" href="Como-voto.html">¿Cómo voto?</a>
+			</div>
+		</nav>
+		<div class="side-menu" id="side-menu">
+			<a href="Index.html">Inicio</a>
+			<a href="Partidos.html">Partidos</a>
+			<a href="Debates.html">Debates actuales</a>
+			<a href="Como-voto.html">¿Cómo voto?</a>
+			<a href="Mapa-politico.html" aria-current="page">Mapa político</a>
+		</div>
+		<div class="brand-header map-header">
+			<div class="brand-line">
+				<p class="brand">OÍD MORTALES</p>
+				<a class="profile" href="#perfil" aria-label="Perfil de usuario"></a>
+			</div>
+			<h1>Mapa político</h1>
+		</div>
+	</header>
+
+	<main class="map-main">
+		<section class="map-card" aria-labelledby="map-card-title">
+			<div class="map-intro">
+				<p class="map-eyebrow">Argentina · 24 distritos electorales</p>
+				<h2 id="map-card-title">Explorá el mapa político</h2>
+				<p id="map-help">Pasá el cursor, tocá o enfocá una provincia para conocer su capital y región.</p>
+			</div>
+
+			<div class="map-explorer">
+				<div class="map-visual">
+					<object id="argentina-map" data="mapa-argentina.svg" type="image/svg+xml" aria-label="Mapa interactivo de las provincias argentinas" aria-describedby="map-help">
+						<p class="map-error">No se pudo cargar el mapa. Probá abrir la página nuevamente.</p>
+					</object>
+				</div>
+				<aside class="map-info" aria-live="polite" aria-atomic="true">
+					<span class="map-info-label" id="province-region">República Argentina</span>
+					<h3 id="province-name">Todo el país</h3>
+					<p class="map-info-copy" id="province-description">Argentina se organiza en 23 provincias y la Ciudad Autónoma de Buenos Aires. Cada una constituye un distrito electoral nacional.</p>
+					<dl class="province-facts">
+						<div>
+							<dt>Capital</dt>
+							<dd id="province-capital">Seleccioná una provincia</dd>
+						</div>
+						<div>
+							<dt>Región</dt>
+							<dd id="province-zone">República Argentina</dd>
+						</div>
+					</dl>
+					<p class="map-hint">Elegí otra provincia para consultar sus datos.</p>
+				</aside>
+			</div>
+			<p class="map-credit">Límites provinciales: <a href="https://github.com/nachios/ArgentinaProvincias">ArgentinaProvincias</a>.</p>
+		</section>
+	</main>
+
+	<footer>
+		<div class="footer-inner" aria-label="Enlaces de contacto">
+			<a class="footer-link" href="#instagram" aria-label="Instagram">
+				<svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"></rect><circle cx="12" cy="12" r="3.5"></circle><circle class="icon-dot" cx="17.5" cy="6.8" r="1"></circle></svg>
+			</a>
+			<a class="footer-link" href="#donaciones" aria-label="Donaciones">
+				<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 20.2s-7.5-4.4-7.5-10A4.1 4.1 0 0 1 12 7.7a4.1 4.1 0 0 1 7.5 2.5c0 5.6-7.5 10-7.5 10Z"></path></svg>
+			</a>
+			<a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">
+				<svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect><path d="m4.5 7 7.5 6 7.5-6"></path></svg>
+			</a>
+		</div>
+	</footer>
+
+	<script>
+		const menuButton = document.querySelector('.menu-toggle');
+		const sideMenu = document.querySelector('#side-menu');
+		menuButton.addEventListener('click', () => {
+			const isOpen = sideMenu.classList.toggle('open');
+			menuButton.setAttribute('aria-expanded', String(isOpen));
+		});
+
+		const provinceFacts = {
+			'Buenos Aires': { displayName: 'Buenos Aires', capital: 'La Plata', region: 'Pampeana' },
+			'Capital Federal': { displayName: 'Ciudad Autónoma de Buenos Aires', capital: 'Buenos Aires', region: 'Pampeana' },
+			'Catamarca': { displayName: 'Catamarca', capital: 'San Fernando del Valle de Catamarca', region: 'NOA' },
+			'Chaco': { displayName: 'Chaco', capital: 'Resistencia', region: 'NEA' },
+			'Chubut': { displayName: 'Chubut', capital: 'Rawson', region: 'Patagonia' },
+			'Cordoba': { displayName: 'Córdoba', capital: 'Córdoba', region: 'Centro' },
+			'Corrientes': { displayName: 'Corrientes', capital: 'Corrientes', region: 'NEA' },
+			'Entre Rios': { displayName: 'Entre Ríos', capital: 'Paraná', region: 'Centro' },
+			'Formosa': { displayName: 'Formosa', capital: 'Formosa', region: 'NEA' },
+			'Jujuy': { displayName: 'Jujuy', capital: 'San Salvador de Jujuy', region: 'NOA' },
+			'La Pampa': { displayName: 'La Pampa', capital: 'Santa Rosa', region: 'Pampeana' },
+			'La Rioja': { displayName: 'La Rioja', capital: 'La Rioja', region: 'NOA' },
+			'Mendoza': { displayName: 'Mendoza', capital: 'Mendoza', region: 'Cuyo' },
+			'Misiones': { displayName: 'Misiones', capital: 'Posadas', region: 'NEA' },
+			'Neuquen': { displayName: 'Neuquén', capital: 'Neuquén', region: 'Patagonia' },
+			'Rio Negro': { displayName: 'Río Negro', capital: 'Viedma', region: 'Patagonia' },
+			'Salta': { displayName: 'Salta', capital: 'Salta', region: 'NOA' },
+			'San Juan': { displayName: 'San Juan', capital: 'San Juan', region: 'Cuyo' },
+			'San Luis': { displayName: 'San Luis', capital: 'San Luis', region: 'Cuyo' },
+			'Santa Cruz': { displayName: 'Santa Cruz', capital: 'Río Gallegos', region: 'Patagonia' },
+			'Santa Fe': { displayName: 'Santa Fe', capital: 'Santa Fe', region: 'Pampeana' },
+			'Santiago del Estero': { displayName: 'Santiago del Estero', capital: 'Santiago del Estero', region: 'NOA' },
+			'Tierra del Fuego': { displayName: 'Tierra del Fuego, Antártida e Islas del Atlántico Sur', capital: 'Ushuaia', region: 'Patagonia' },
+			'Tucuman': { displayName: 'Tucumán', capital: 'San Miguel de Tucumán', region: 'NOA' }
+		};
+		const mapObject = document.querySelector('#argentina-map');
+		const provinceName = document.querySelector('#province-name');
+		const provinceRegion = document.querySelector('#province-region');
+		const provinceCapital = document.querySelector('#province-capital');
+		const provinceZone = document.querySelector('#province-zone');
+		const provinceDescription = document.querySelector('#province-description');
+		let selectedProvince = null;
+
+		function showProvince(name) {
+			const details = provinceFacts[name];
+			if (!details) {
+				throw new Error(`No hay información cargada para ${name}.`);
+			}
+			provinceName.textContent = details.displayName;
+			provinceRegion.textContent = `Distrito electoral · ${details.region}`;
+			provinceCapital.textContent = details.capital;
+			provinceZone.textContent = details.region;
+			provinceDescription.textContent = 'Forma parte de la organización política y electoral de la República Argentina.';
+		}
+
+		function resetProvinceInfo() {
+			if (selectedProvince) {
+				showProvince(selectedProvince);
+				return;
+			}
+			provinceName.textContent = 'Todo el país';
+			provinceRegion.textContent = 'República Argentina';
+			provinceCapital.textContent = 'Seleccioná una provincia';
+			provinceZone.textContent = 'República Argentina';
+			provinceDescription.textContent = 'Argentina se organiza en 23 provincias y la Ciudad Autónoma de Buenos Aires. Cada una constituye un distrito electoral nacional.';
+		}
+
+		mapObject.addEventListener('load', () => {
+			const provinces = mapObject.contentDocument.querySelectorAll('.province');
+			provinces.forEach((province) => {
+				const name = province.getAttribute('data-name');
+				province.setAttribute('tabindex', '0');
+				province.setAttribute('role', 'button');
+				province.setAttribute('aria-label', `Seleccionar ${provinceFacts[name].displayName}`);
+				province.setAttribute('aria-pressed', 'false');
+				province.addEventListener('pointerenter', () => showProvince(name));
+				province.addEventListener('pointerleave', resetProvinceInfo);
+				province.addEventListener('focus', () => showProvince(name));
+				province.addEventListener('blur', resetProvinceInfo);
+				province.addEventListener('click', () => {
+					selectedProvince = name;
+					provinces.forEach((item) => {
+						const isSelected = item === province;
+						item.classList.toggle('is-selected', isSelected);
+						item.setAttribute('aria-pressed', String(isSelected));
+					});
+					showProvince(name);
+				});
+				province.addEventListener('keydown', (event) => {
+					if (event.key === 'Enter' || event.key === ' ') {
+						event.preventDefault();
+						province.click();
+					}
+				});
+			});
+		});
+		mapObject.addEventListener('error', () => {
+			provinceDescription.textContent = 'No se pudo cargar el mapa. Probá abrir la página nuevamente.';
+		});
+	</script>
+</body>
+</html>
