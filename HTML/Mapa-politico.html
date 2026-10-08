@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explorá las provincias argentinas y conocé sus debates locales en el mapa político de Oíd Mortales.">
+  <title>Mapa político | OÍD MORTALES</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="map-page">
+  <header class="site-header">
+    <nav class="topbar" aria-label="Navegación principal">
+      <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="tabs">
+        <a class="tab blue" href="Partidos.html">Partidos</a>
+        <a class="tab" href="Debates.html">Debates actuales</a>
+        <a class="tab blue" href="Como-voto.html">¿Cómo voto?</a>
+      </div>
+    </nav>
+    <div class="side-menu" id="side-menu">
+      <a href="Index.html">Inicio</a>
+      <a href="Partidos.html">Partidos</a>
+      <a href="Debates.html">Debates actuales</a>
+      <a href="Mapa-politico.html" aria-current="page">Mapa político</a>
+      <a href="Como-voto.html">¿Cómo voto?</a>
+    </div>
+    <div class="brand-header map-header">
+      <div class="brand-line">
+        <p class="brand">OÍD MORTALES</p>
+        <a class="profile" href="#perfil" aria-label="Perfil de usuario"></a>
+      </div>
+      <h1>Mapa político</h1>
+    </div>
+  </header>
+
+  <main class="map-main">
+    <section class="map-panel" aria-labelledby="map-section-title">
+      <div class="map-panel-header">
+        <div>
+          <p class="map-eyebrow">ARGENTINA, PROVINCIA POR PROVINCIA</p>
+          <h2 id="map-section-title">Explorá el mapa</h2>
+          <p class="map-description" id="map-description">Acercá el cursor a una provincia para descubrir sus debates locales.</p>
+        </div>
+        <p class="map-hint"><span aria-hidden="true">↗</span> Pasá el cursor o enfocá una provincia</p>
+      </div>
+
+      <div class="map-stage">
+        <object class="argentina-map" data="argentina-provincias.svg" type="image/svg+xml" aria-label="Mapa interactivo de las 23 provincias argentinas y la Ciudad Autónoma de Buenos Aires">
+          <p class="map-fallback">No se pudo cargar el mapa. Comprobá que el archivo de cartografía esté disponible junto a esta página.</p>
+        </object>
+      </div>
+
+      <p class="map-credit">Cartografía provincial simplificada a partir del GeoJSON de <a href="https://github.com/matischroder/argentinaJson" target="_blank" rel="noreferrer">argentinaJson</a>. Representación orientativa.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner" aria-label="Enlaces de contacto">
+      <a class="footer-link" href="#instagram" aria-label="Instagram">ig</a>
+      <a class="footer-link" href="#donaciones" aria-label="Donaciones">$</a>
+      <a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">@</a>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const sideMenu = document.querySelector('#side-menu');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = sideMenu.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+    });
+  </script>
+</body>
+</html>
