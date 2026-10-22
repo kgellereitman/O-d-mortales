@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+	<title id="title">Un alumno reacciona sorprendido</title>
+	<desc id="desc">Un alumno original, sorprendido por la lección, levanta las manos en un aula.</desc>
+	<rect width="960" height="420" fill="#e5c994"/>
+	<rect x="40" y="32" width="880" height="255" rx="15" fill="#405e5b"/>
+	<path d="M96 98h240M96 148h310M96 198h190" stroke="#e0e4c9" stroke-width="9" stroke-linecap="round"/>
+	<rect y="300" width="960" height="120" fill="#b98b61"/>
+	<g transform="translate(345 12)">
+		<path d="M60 399c-9-107 10-159 113-169 105-10 157 62 151 169z" fill="#405f88"/>
+		<path d="M123 173c-27-35-17-105 32-125 57-23 110 14 99 73-7 41-36 76-77 71-23-3-40-7-54-19z" fill="#c18561"/>
+		<path d="M119 111c-14-70 34-93 83-91 54 2 78 41 55 78-37-9-68-26-91-49-8 25-22 48-47 62z" fill="#33313b"/>
+		<path d="M167 133c-2-14 5-23 15-23 11 0 16 9 15 23m27 0c-2-14 5-23 15-23 11 0 16 9 15 23" fill="none" stroke="#27252a" stroke-width="8" stroke-linecap="round"/>
+		<ellipse cx="223" cy="168" rx="15" ry="22" fill="#4a302b"/>
+		<path d="m81 230-76-84m76 84-53 24M318 230l76-88m-76 88 52 29" fill="none" stroke="#c18561" stroke-width="23" stroke-linecap="round"/>
+		<path d="m5 146-23-40m-7 71-39-14m441-21 22-38m9 73 42-13" fill="none" stroke="#c18561" stroke-width="17" stroke-linecap="round"/>
+		<path d="M111 216h111l-24 43h-72z" fill="#f1e7d4"/>
+	</g>
+	<path d="M81 348h190m440 0h165" stroke="#8f6648" stroke-width="6"/>
+</svg>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Titulares y enlaces a noticias políticas, seleccionados por Oíd Mortales.">
+	<title>Noticias | OÍD MORTALES</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body class="news-page">
+	<header class="site-header">
+		<nav class="topbar" aria-label="Navegación principal">
+			<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu">
+				<span></span><span></span><span></span>
+			</button>
+			<div class="tabs">
+				<a class="tab blue" href="Partidos.html">Partidos</a>
+				<a class="tab news-tab-active" href="Debates.html" aria-current="page">Debates actuales</a>
+				<a class="tab blue" href="Como-voto.html">¿Cómo voto?</a>
+			</div>
+		</nav>
+		<div class="side-menu" id="side-menu">
+			<a href="Index.html">Inicio</a>
+			<a href="Partidos.html">Partidos</a>
+			<a href="Debates.html">Debates actuales</a>
+			<a href="Como-voto.html">¿Cómo voto?</a>
+			<a href="Eje-politico.html">Eje político</a>
+			<a href="Calendario.html">Calendario</a>
+			<a href="Encuestas.html">Encuestas</a>
+			<a href="Como-funciona-el-estado.html">¿Cómo funciona el estado?</a>
+			<a href="Memes.html">Memes</a>
+			<a href="Foro-publico.html">Foro público</a>
+			<a href="Mapa-politico.html">Mapa político</a>
+			<a href="Noticias.html" aria-current="page">Noticias</a>
+			<a href="Configuracion.html">Configuración</a>
+			<a href="Quienes-somos.html">Quiénes somos</a>
+		</div>
+		<div class="brand-header news-header">
+			<div class="brand-line">
+				<img class="brand" src="assets/oid-mortales.png" alt="Oíd Mortales">
+				<a class="profile" href="Usuario.html" aria-label="Perfil de usuario"></a>
+			</div>
+			<h1>Noticias</h1>
+		</div>
+	</header>
+
+	<main class="news-main">
+		<aside class="news-disclaimer" aria-labelledby="disclaimer-title">
+			<h2 id="disclaimer-title">¡ATENCIÓN!</h2>
+			<p>Nosotros no redactamos estas portadas de noticias. No nos hacemos responsables acerca de la información en ellas.</p>
+		</aside>
+
+		<section class="news-list" aria-label="Titulares de noticias">
+			<article class="news-item">
+				<h2>Contactos con el gobierno de Delcy Rodríguez <span class="news-source">~ TN</span></h2>
+				<a class="news-link" href="https://tn.com.ar/" target="_blank" rel="noopener noreferrer">Ir a la noticia <span aria-hidden="true">↗</span></a>
+			</article>
+			<article class="news-item">
+				<h2>Diputados le dio luz verde al Súper RIGI <span class="news-source">~ C5N</span></h2>
+				<a class="news-link" href="https://www.c5n.com/" target="_blank" rel="noopener noreferrer">Ir a la noticia <span aria-hidden="true">↗</span></a>
+			</article>
+		</section>
+	</main>
+
+	<footer class="news-footer">
+		<nav class="footer-inner" aria-label="Enlaces de contacto">
+			<a class="footer-link" href="#instagram" aria-label="Instagram">
+				<svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"></rect><circle cx="12" cy="12" r="3.5"></circle><circle class="icon-dot" cx="17.5" cy="6.8" r="1"></circle></svg>
+			</a>
+			<a class="footer-link" href="#donaciones" aria-label="Donaciones">
+				<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 20.2s-7.5-4.4-7.5-10A4.1 4.1 0 0 1 12 7.7a4.1 4.1 0 0 1 7.5 2.5c0 5.6-7.5 10-7.5 10Z"></path></svg>
+			</a>
+			<a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">
+				<svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect><path d="m4.5 7 7.5 6 7.5-6"></path></svg>
+			</a>
+		</nav>
+	</footer>
+
+	<script>
+		const menuButton = document.querySelector('.menu-toggle');
+		const sideMenu = document.querySelector('#side-menu');
+		menuButton.addEventListener('click', (event) => {
+			const isOpen = sideMenu.classList.toggle('open');
+			event.currentTarget.setAttribute('aria-expanded', String(isOpen));
+		});
+	</script>
+</body>
+</html>

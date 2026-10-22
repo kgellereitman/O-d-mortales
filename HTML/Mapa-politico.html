@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Explorá las provincias y la organización política de Argentina en Oíd Mortales.">
+	<title>Mapa político | OÍD MORTALES</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body class="map-page">
+	<header class="site-header">
+		<nav class="topbar" aria-label="Navegación principal">
+			<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu">
+				<span></span><span></span><span></span>
+			</button>
+			<div class="tabs">
+				<a class="tab blue" href="Partidos.html">Partidos</a>
+				<a class="tab" href="Debates.html">Debates actuales</a>
+				<a class="tab blue" href="Como-voto.html">¿Cómo voto?</a>
+			</div>
+		</nav>
+		<div class="side-menu" id="side-menu">
+			<a href="Index.html">Inicio</a>
+			<a href="Partidos.html">Partidos</a>
+			<a href="Debates.html">Debates actuales</a>
+			<a href="Como-voto.html">¿Cómo voto?</a>
+			<a href="Eje-politico.html">Eje político</a>
+			<a href="Calendario.html">Calendario</a>
+			<a href="Encuestas.html">Encuestas</a>
+			<a href="Como-funciona-el-estado.html">¿Cómo funciona el estado?</a>
+			<a href="Memes.html">Memes</a>
+			<a href="Foro-publico.html">Foro público</a>
+			<a href="Mapa-politico.html" aria-current="page">Mapa político</a>
+			<a href="Noticias.html">Noticias</a>
+			<a href="Configuracion.html">Configuración</a>
+			<a href="Quienes-somos.html">Quiénes somos</a>
+		</div>
+		<div class="brand-header map-header">
+			<div class="brand-line">
+				<img class="brand" src="assets/oid-mortales.png" alt="Oíd Mortales">
+				<a class="profile" href="Usuario.html" aria-label="Perfil de usuario"></a>
+			</div>
+			<h1>Mapa político</h1>
+		</div>
+	</header>
+
+	<main class="map-main">
+		<section class="map-card" aria-labelledby="map-card-title">
+			<div class="map-intro">
+				<p class="map-eyebrow">Argentina · 24 distritos electorales</p>
+				<h2 id="map-card-title">Explorá el mapa político</h2>
+				<p id="map-help">Hacé clic o tocá una provincia —o elegila en el menú— para consultar quién está al frente de su gobierno.</p>
+			</div>
+
+			<div class="map-explorer">
+				<div class="map-visual">
+					<object id="argentina-map" data="mapa-argentina.svg" type="image/svg+xml" aria-label="Mapa interactivo de las provincias argentinas" aria-describedby="map-help">
+						<p class="map-error">No se pudo cargar el mapa. Probá abrir la página nuevamente.</p>
+					</object>
+				</div>
+				<aside class="map-info" aria-live="polite" aria-atomic="true">
+					<label class="province-select-label" for="province-select">También podés elegir una provincia</label>
+					<select class="province-select" id="province-select">
+						<option value="">Todo el país</option>
+					</select>
+					<span class="map-info-label" id="province-context">República Argentina</span>
+					<h3 id="province-name">Todo el país</h3>
+					<p class="map-info-copy" id="province-description">Argentina se organiza en 23 provincias y la Ciudad Autónoma de Buenos Aires. Seleccioná una jurisdicción para conocer a su autoridad de gobierno actual.</p>
+					<dl class="province-facts">
+						<div>
+							<dt>Autoridad de gobierno</dt>
+							<dd id="province-governor">Seleccioná una provincia</dd>
+						</div>
+						<div>
+							<dt>Portal oficial</dt>
+							<dd><span id="province-more-placeholder">Seleccioná una provincia</span><a id="province-more" href="#" target="_blank" rel="noopener noreferrer" hidden>Saber más</a></dd>
+						</div>
+					</dl>
+					<p class="map-hint">La información corresponde a las autoridades en funciones. Elegí otra jurisdicción para consultarla.</p>
+				</aside>
+			</div>
+			<p class="map-credit">Autoridades en funciones consultadas en octubre de 2026. Límites provinciales: <a href="https://github.com/nachios/ArgentinaProvincias">ArgentinaProvincias</a>.</p>
+		</section>
+	</main>
+
+	<footer>
+		<div class="footer-inner" aria-label="Enlaces de contacto">
+			<a class="footer-link" href="#instagram" aria-label="Instagram">
+				<svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"></rect><circle cx="12" cy="12" r="3.5"></circle><circle class="icon-dot" cx="17.5" cy="6.8" r="1"></circle></svg>
+			</a>
+			<a class="footer-link" href="#donaciones" aria-label="Donaciones">
+				<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 20.2s-7.5-4.4-7.5-10A4.1 4.1 0 0 1 12 7.7a4.1 4.1 0 0 1 7.5 2.5c0 5.6-7.5 10-7.5 10Z"></path></svg>
+			</a>
+			<a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">
+				<svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect><path d="m4.5 7 7.5 6 7.5-6"></path></svg>
+			</a>
+		</div>
+	</footer>
+
+	<script>
+		const menuButton = document.querySelector('.menu-toggle');
+		const sideMenu = document.querySelector('#side-menu');
+		menuButton.addEventListener('click', () => {
+			const isOpen = sideMenu.classList.toggle('open');
+			menuButton.setAttribute('aria-expanded', String(isOpen));
+		});
+
+		const provinceFacts = {
+			'Buenos Aires': { displayName: 'Buenos Aires', authority: 'Gobernador: Axel Kicillof', url: 'https://www.gba.gob.ar/' },
+			'Capital Federal': { displayName: 'Ciudad Autónoma de Buenos Aires', authority: 'Jefe de Gobierno: Jorge Macri', url: 'https://buenosaires.gob.ar/' },
+			'Catamarca': { displayName: 'Catamarca', authority: 'Gobernador: Raúl Jalil', url: 'https://www.catamarca.gob.ar/' },
+			'Chaco': { displayName: 'Chaco', authority: 'Gobernador: Leandro Zdero', url: 'https://chaco.gov.ar/' },
+			'Chubut': { displayName: 'Chubut', authority: 'Gobernador: Ignacio Torres', url: 'https://www.chubut.gov.ar/' },
+			'Cordoba': { displayName: 'Córdoba', authority: 'Gobernador: Martín Llaryora', url: 'https://www.cba.gov.ar/' },
+			'Corrientes': { displayName: 'Corrientes', authority: 'Gobernador: Juan Pablo Valdés', url: 'https://www.corrientes.gob.ar/' },
+			'Entre Rios': { displayName: 'Entre Ríos', authority: 'Gobernador: Rogelio Frigerio', url: 'https://www.entrerios.gov.ar/' },
+			'Formosa': { displayName: 'Formosa', authority: 'Gobernador: Gildo Insfrán', url: 'https://www.formosa.gob.ar/' },
+			'Jujuy': { displayName: 'Jujuy', authority: 'Gobernador: Carlos Sadir', url: 'https://www.jujuy.gob.ar/' },
+			'La Pampa': { displayName: 'La Pampa', authority: 'Gobernador: Sergio Ziliotto', url: 'https://www.lapampa.gob.ar/' },
+			'La Rioja': { displayName: 'La Rioja', authority: 'Gobernador: Ricardo Quintela', url: 'https://larioja.gob.ar/' },
+			'Mendoza': { displayName: 'Mendoza', authority: 'Gobernador: Alfredo Cornejo', url: 'https://www.mendoza.gov.ar/' },
+			'Misiones': { displayName: 'Misiones', authority: 'Gobernador: Hugo Passalacqua', url: 'https://misiones.gob.ar/' },
+			'Neuquen': { displayName: 'Neuquén', authority: 'Gobernador: Rolando Figueroa', url: 'https://www.neuquen.gov.ar/' },
+			'Rio Negro': { displayName: 'Río Negro', authority: 'Gobernador: Alberto Weretilneck', url: 'https://rionegro.gov.ar/' },
+			'Salta': { displayName: 'Salta', authority: 'Gobernador: Gustavo Sáenz', url: 'https://www.salta.gob.ar/' },
+			'San Juan': { displayName: 'San Juan', authority: 'Gobernador: Marcelo Orrego', url: 'https://sisanjuan.gob.ar/' },
+			'San Luis': { displayName: 'San Luis', authority: 'Gobernador: Claudio Poggi', url: 'https://sanluis.gov.ar/' },
+			'Santa Cruz': { displayName: 'Santa Cruz', authority: 'Gobernador: Claudio Vidal', url: 'https://www.santacruz.gob.ar/' },
+			'Santa Fe': { displayName: 'Santa Fe', authority: 'Gobernador: Maximiliano Pullaro', url: 'https://www.santafe.gov.ar/' },
+			'Santiago del Estero': { displayName: 'Santiago del Estero', authority: 'Gobernador: Elías Suárez', url: 'https://sde.gob.ar/' },
+			'Tierra del Fuego': { displayName: 'Tierra del Fuego, Antártida e Islas del Atlántico Sur', authority: 'Gobernador: Gustavo Melella', url: 'https://www.tierradelfuego.gob.ar/' },
+			'Tucuman': { displayName: 'Tucumán', authority: 'Gobernador: Osvaldo Jaldo', url: 'https://www.tucuman.gob.ar/' }
+		};
+		const mapObject = document.querySelector('#argentina-map');
+		const provinceName = document.querySelector('#province-name');
+		const provinceContext = document.querySelector('#province-context');
+		const provinceGovernor = document.querySelector('#province-governor');
+		const provinceDescription = document.querySelector('#province-description');
+		const provinceSelect = document.querySelector('#province-select');
+		const provinceMore = document.querySelector('#province-more');
+		const provinceMorePlaceholder = document.querySelector('#province-more-placeholder');
+		let selectedProvince = null;
+
+		function showProvince(name) {
+			const details = provinceFacts[name];
+			if (!details) {
+				throw new Error(`No hay información cargada para ${name}.`);
+			}
+			provinceName.textContent = details.displayName;
+			provinceContext.textContent = 'Gobierno en funciones';
+			provinceGovernor.textContent = details.authority;
+			provinceDescription.textContent = 'Autoridad a cargo del Poder Ejecutivo de esta jurisdicción.';
+			provinceMore.href = details.url;
+			provinceMore.setAttribute('aria-label', `Saber más sobre el gobierno de ${details.displayName}`);
+			provinceMore.hidden = false;
+			provinceMorePlaceholder.hidden = true;
+		}
+
+		function resetProvinceInfo() {
+			provinceSelect.value = selectedProvince || '';
+			if (selectedProvince) {
+				showProvince(selectedProvince);
+				return;
+			}
+			provinceName.textContent = 'Todo el país';
+			provinceContext.textContent = 'República Argentina';
+			provinceGovernor.textContent = 'Seleccioná una provincia';
+			provinceDescription.textContent = 'Argentina se organiza en 23 provincias y la Ciudad Autónoma de Buenos Aires. Seleccioná una jurisdicción para conocer a su autoridad de gobierno actual.';
+			provinceMore.hidden = true;
+			provinceMorePlaceholder.hidden = false;
+		}
+
+		function previewProvince(name) {
+			provinceSelect.value = name;
+			showProvince(name);
+		}
+
+		function selectProvince(name, provinces) {
+			selectedProvince = name;
+			provinces.forEach((province) => {
+				const isSelected = province.getAttribute('data-name') === name;
+				province.classList.toggle('is-selected', isSelected);
+				province.setAttribute('aria-pressed', String(isSelected));
+			});
+			provinceSelect.value = name || '';
+			if (name) {
+				showProvince(name);
+			} else {
+				resetProvinceInfo();
+			}
+		}
+
+		mapObject.addEventListener('load', () => {
+			const provinces = mapObject.contentDocument.querySelectorAll('.province');
+			provinces.forEach((province) => {
+				const name = province.getAttribute('data-name');
+				const details = provinceFacts[name];
+				if (!details) {
+					throw new Error(`No hay información cargada para ${name || 'una provincia sin nombre'}.`);
+				}
+				provinceSelect.add(new Option(details.displayName, name));
+			});
+			provinceSelect.addEventListener('change', () => {
+				selectProvince(provinceSelect.value || null, provinces);
+			});
+			provinces.forEach((province) => {
+				const name = province.getAttribute('data-name');
+				province.setAttribute('tabindex', '0');
+				province.setAttribute('role', 'button');
+				province.setAttribute('aria-label', `Seleccionar ${provinceFacts[name].displayName}`);
+				province.setAttribute('aria-pressed', 'false');
+				province.addEventListener('pointerenter', () => previewProvince(name));
+				province.addEventListener('pointerleave', resetProvinceInfo);
+				province.addEventListener('focus', () => previewProvince(name));
+				province.addEventListener('blur', resetProvinceInfo);
+				province.addEventListener('click', () => {
+					selectProvince(name, provinces);
+				});
+				province.addEventListener('keydown', (event) => {
+					if (event.key === 'Enter' || event.key === ' ') {
+						event.preventDefault();
+						selectProvince(name, provinces);
+					}
+				});
+			});
+		});
+		mapObject.addEventListener('error', () => {
+			provinceDescription.textContent = 'No se pudo cargar el mapa. Probá abrir la página nuevamente.';
+		});
+	</script>
+</body>
+</html>

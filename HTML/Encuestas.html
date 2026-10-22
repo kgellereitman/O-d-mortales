@@ -18,36 +18,49 @@
 			</div>
 		</nav>
 		<div class="side-menu" id="side-menu">
-			<a href="Index.html">Inicio</a><a href="Partidos.html">Partidos</a><a href="Debates.html">Debates actuales</a><a href="Como-voto.html">¿Cómo voto?</a>
+			<a href="Index.html">Inicio</a>
+			<a href="Partidos.html">Partidos</a>
+			<a href="Debates.html">Debates actuales</a>
+			<a href="Como-voto.html">¿Cómo voto?</a>
+			<a href="Eje-politico.html">Eje político</a>
+			<a href="Calendario.html">Calendario</a>
+			<a href="Encuestas.html" aria-current="page">Encuestas</a>
+			<a href="Como-funciona-el-estado.html">¿Cómo funciona el estado?</a>
+			<a href="Memes.html">Memes</a>
+			<a href="Foro-publico.html">Foro público</a>
+			<a href="Mapa-politico.html">Mapa político</a>
+			<a href="Noticias.html">Noticias</a>
+			<a href="Configuracion.html">Configuración</a>
+			<a href="Quienes-somos.html">Quiénes somos</a>
 		</div>
 		<div class="brand-header polls-header">
-			<div class="brand-line"><p class="brand">OÍD MORTALES</p><a class="profile" href="#perfil" aria-label="Perfil de usuario"></a></div>
+			<div class="brand-line"><img class="brand" src="assets/oid-mortales.png" alt="Oíd Mortales"><a class="profile" href="Usuario.html" aria-label="Perfil de usuario"></a></div>
 			<h1>Encuestas</h1>
 		</div>
 	</header>
 
 	<main class="polls-main">
 		<form class="poll-form" id="poll-form">
-			<fieldset class="poll-card">
-				<legend>¿Considera que el Estado argentino cumple de manera efectiva con su función de garantizar derechos y bienestar a la población?</legend>
-				<div class="poll-options">
+			<section class="poll-card" aria-labelledby="state-function-question">
+				<h2 class="poll-question" id="state-function-question">¿Considera que el Estado argentino cumple de manera efectiva con su función de garantizar derechos y bienestar a la población?</h2>
+				<div class="poll-options" role="radiogroup" aria-labelledby="state-function-question">
 					<label class="poll-option"><input type="radio" name="state-function" value="effective" required><span>Sí, de manera efectiva</span></label>
 					<label class="poll-option"><input type="radio" name="state-function" value="partial"><span>Parcialmente</span></label>
 					<label class="poll-option"><input type="radio" name="state-function" value="insufficient"><span>No, de manera insuficiente</span></label>
 					<label class="poll-option"><input type="radio" name="state-function" value="no-answer"><span>No sabe / No responde</span></label>
 				</div>
-			</fieldset>
+			</section>
 
-			<fieldset class="poll-card">
-				<legend>¿Qué nivel de confianza tiene en las instituciones democráticas de Argentina (Congreso, Poder Judicial, Presidencia)?</legend>
-				<div class="poll-options">
+			<section class="poll-card" aria-labelledby="democratic-trust-question">
+				<h2 class="poll-question" id="democratic-trust-question">¿Qué nivel de confianza tiene en las instituciones democráticas de Argentina (Congreso, Poder Judicial, Presidencia)?</h2>
+				<div class="poll-options" role="radiogroup" aria-labelledby="democratic-trust-question">
 					<label class="poll-option"><input type="radio" name="democratic-trust" value="high" required><span>Alta confianza</span></label>
 					<label class="poll-option"><input type="radio" name="democratic-trust" value="moderate"><span>Moderada confianza</span></label>
 					<label class="poll-option"><input type="radio" name="democratic-trust" value="low"><span>Baja confianza</span></label>
 					<label class="poll-option"><input type="radio" name="democratic-trust" value="none"><span>Ninguna confianza</span></label>
 					<label class="poll-option"><input type="radio" name="democratic-trust" value="no-answer"><span>No sabe / No responde</span></label>
 				</div>
-			</fieldset>
+			</section>
 
 			<div class="poll-actions">
 				<button class="poll-submit" type="submit">Enviar respuestas</button>

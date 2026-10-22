@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-labelledby="title desc">
+	<title id="title">Aula durante un debate</title>
+	<desc id="desc">Una clase original de estudiantes sigue un debate en una pantalla del aula.</desc>
+	<rect width="960" height="540" fill="#dce9ed"/>
+	<rect x="42" y="36" width="876" height="320" rx="18" fill="#f5ead4"/>
+	<rect x="540" y="78" width="314" height="200" rx="9" fill="#243b51"/>
+	<rect x="554" y="92" width="286" height="170" rx="5" fill="#89b7c2"/>
+	<path d="M585 221c21-62 54-93 97-93 37 0 67 27 83 79 19-36 43-54 76-57v112H585z" fill="#4e687d"/>
+	<circle cx="659" cy="167" r="31" fill="#ca8c66"/>
+	<circle cx="761" cy="170" r="29" fill="#d6a17b"/>
+	<path d="M633 163c3-37 39-51 61-28m41 29c0-32 34-48 57-26" fill="none" stroke="#373238" stroke-width="15" stroke-linecap="round"/>
+	<path d="M681 314h90m-45-36v36" stroke="#43566b" stroke-width="11"/>
+	<rect y="356" width="960" height="184" fill="#ad815e"/>
+	<path d="M0 383h960M155 356v184m330-184v184m330-184v184" stroke="#8d674e" stroke-width="5"/>
+	<g>
+		<g transform="translate(84 279)"><path d="M0 193c3-78 19-120 69-124 50-4 73 40 76 124z" fill="#d66d54"/><circle cx="70" cy="49" r="42" fill="#b8795c"/><path d="M29 47c0-53 84-67 91-8-34-4-56-17-70-31-2 18-8 29-21 39z" fill="#31313b"/><path d="M20 172h142l12 24H8z" fill="#c08256"/></g>
+		<g transform="translate(286 295)"><path d="M0 177c2-73 17-108 65-112 49-4 72 37 75 112z" fill="#577fa1"/><circle cx="68" cy="43" r="38" fill="#d5a079"/><path d="M31 40c4-48 72-56 82-8-30-4-49-15-61-27-2 15-9 26-21 35z" fill="#443934"/><path d="M12 157h136l13 20H0z" fill="#b47e57"/></g>
+		<g transform="translate(530 293)"><path d="M0 179c2-73 18-109 67-112 49-3 72 38 75 112z" fill="#7d6896"/><circle cx="68" cy="45" r="38" fill="#bc805e"/><path d="M30 42c0-48 77-57 83-9-31-3-52-14-64-27-3 15-9 27-19 36z" fill="#2d2c35"/><path d="M12 158h138l13 21H0z" fill="#b8805a"/></g>
+		<g transform="translate(742 279)"><path d="M0 193c2-78 19-120 68-124 51-4 74 40 77 124z" fill="#43928e"/><circle cx="71" cy="49" r="42" fill="#d19a73"/><path d="M30 47c-1-53 83-67 91-8-34-4-56-17-70-31-2 18-8 29-21 39z" fill="#3c3434"/><path d="M20 172h144l12 24H8z" fill="#c0885c"/></g>
+	</g>
+</svg>

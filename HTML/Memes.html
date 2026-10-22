@@ -18,59 +18,89 @@
 			</div>
 		</nav>
 		<div class="side-menu" id="side-menu">
-			<a href="Index.html">Inicio</a><a href="Partidos.html">Partidos</a><a href="Debates.html">Debates actuales</a><a href="Como-voto.html">¿Cómo voto?</a>
+			<a href="Index.html">Inicio</a>
+			<a href="Partidos.html">Partidos</a>
+			<a href="Debates.html">Debates actuales</a>
+			<a href="Como-voto.html">¿Cómo voto?</a>
+			<a href="Eje-politico.html">Eje político</a>
+			<a href="Calendario.html">Calendario</a>
+			<a href="Encuestas.html">Encuestas</a>
+			<a href="Como-funciona-el-estado.html">¿Cómo funciona el estado?</a>
+			<a href="Memes.html" aria-current="page">Memes</a>
+			<a href="Foro-publico.html">Foro público</a>
+			<a href="Mapa-politico.html">Mapa político</a>
+			<a href="Noticias.html">Noticias</a>
+			<a href="Configuracion.html">Configuración</a>
+			<a href="Quienes-somos.html">Quiénes somos</a>
 		</div>
 		<div class="brand-header memes-header">
-			<div class="brand-line"><p class="brand">OÍD MORTALES</p><a class="profile" href="#perfil" aria-label="Perfil de usuario"></a></div>
+			<div class="brand-line"><img class="brand" src="assets/oid-mortales.png" alt="Oíd Mortales"><a class="profile" href="Usuario.html" aria-label="Perfil de usuario"></a></div>
 			<h1>Memes</h1>
 		</div>
 	</header>
 
 	<main class="memes-main">
-		<section class="meme-feed" aria-label="Galería de memes políticos">
+		<section class="meme-feed" aria-label="Feed de memes y publicaciones políticas">
 			<article class="meme-card meme-card-purple">
-				<div class="meme-art history-meme" role="img" aria-label="Meme sobre una clase de historia y la coyuntura política">
-					<div class="history-speech">Profe de historia:<br><strong>“Esto ya pasó antes”</strong></div>
-					<div class="history-character" aria-hidden="true"><span class="history-head"></span><span class="history-body"></span></div>
-					<div class="history-caption">La coyuntura política, otra vez:</div>
+				<div class="history-comic" aria-label="Meme original en dos paneles sobre una clase de historia">
+					<figure class="history-panel">
+						<img src="assets/memes/history-class.svg" alt="Una profesora de historia original conversa con un alumno en un aula.">
+						<figcaption>PROFE DE HISTORIA</figcaption>
+					</figure>
+					<figure class="history-panel history-panel-reaction">
+						<img src="assets/memes/history-reaction.svg" alt="Un alumno sorprendido levanta las manos frente al pizarrón.">
+						<figcaption>Niño Larreta: <strong>¡AUXILIO, ME ESTÁ ADOCTRINANDO!</strong></figcaption>
+					</figure>
 				</div>
-				<p class="meme-caption">Cuando el presente se parece demasiado al programa de la materia.</p>
+				<div class="meme-post-meta meme-caption"><span>Meme original · Humor político</span><span aria-label="1.284 reacciones">♡ 1.284</span></div>
 			</article>
 
 			<article class="meme-card meme-card-cyan tweet-card">
 				<header class="tweet-header">
-					<div class="tweet-avatar" aria-hidden="true">L</div>
+					<img class="tweet-avatar" src="assets/memes/profile-lucia.svg" alt="">
 					<div class="tweet-author"><strong>Lucía Fernández</strong><span>@Lucfxxxx</span></div>
 					<button class="follow-button" type="button" aria-pressed="false">Seguir</button>
 				</header>
-				<p class="tweet-copy">El debate presidencial en una imagen.<br><span>#DebatePresidencial #Argentina</span></p>
-				<div class="tweet-image" role="img" aria-label="Ilustración de un debate presidencial"><span>DEBATE<br><strong>EN VIVO</strong></span><i aria-hidden="true"></i></div>
+				<p class="tweet-copy">Los debates presidenciales de 2023, resumidos en una imagen.<br><span>#DebatePresidencial2023 #Argentina</span></p>
+				<img class="tweet-image" src="assets/memes/classroom-debate.svg" alt="Ilustración original de estudiantes atentos en un aula durante un debate.">
 				<footer class="tweet-meta"><time datetime="2023-10-01T21:42">21:42 · 1 oct. 2023</time><div class="tweet-metrics"><span>↻ 132</span><span>◇ 28</span><span>♡ 1.2 mil</span></div></footer>
 			</article>
 
-			<div class="meme-pair meme-card meme-card-purple" aria-label="Dos memes destacados">
-				<article class="square-meme adorni-meme">
-					<div class="adorni-portrait" aria-hidden="true"><span></span></div>
-					<p>“No hay plata”<br><strong>pero hay memes</strong></p>
-				</article>
-				<article class="square-meme laser-meme">
-					<div class="laser-eyes" aria-hidden="true"><span></span><span></span></div>
-					<p>Cuando te explican<br><strong>el presupuesto</strong></p>
-				</article>
-			</div>
+			<article class="meme-pair meme-card meme-card-purple" aria-label="Galería de dos memes destacados">
+				<div class="square-meme quote-meme">
+					<div class="quote-portrait" aria-hidden="true"><span></span></div>
+					<p><span class="quote-attribution">Manuel Adorni</span><q>Si no te gusta laburar, perfecto, pero no esperes que el resto te mantenga.</q></p>
+				</div>
+				<div class="square-meme laser-meme">
+					<img src="assets/memes/laser-eyes.svg" alt="Ilustración de un orador político original, de cabello plateado y detrás de un atril, con rayos láser rojos en los ojos.">
+					<p><strong>Espectador:}</strong><br>Cuando se prende el debate.</p>
+				</div>
+			</article>
 		</section>
 	</main>
 
-	<footer><div class="footer-inner" aria-label="Enlaces de contacto"><a class="footer-link" href="#instagram" aria-label="Instagram">ig</a><a class="footer-link" href="#donaciones" aria-label="Donaciones">$</a><a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">@</a></div></footer>
+	<footer class="memes-footer">
+		<nav class="footer-inner" aria-label="Enlaces de contacto">
+			<a class="footer-link" href="#instagram" aria-label="Instagram">
+				<svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"></rect><circle cx="12" cy="12" r="3.5"></circle><circle class="icon-dot" cx="17.5" cy="6.8" r="1"></circle></svg>
+			</a>
+			<a class="footer-link" href="#donaciones" aria-label="Donaciones">
+				<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 20.2s-7.5-4.4-7.5-10A4.1 4.1 0 0 1 12 7.7a4.1 4.1 0 0 1 7.5 2.5c0 5.6-7.5 10-7.5 10Z"></path></svg>
+			</a>
+			<a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">
+				<svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect><path d="m4.5 7 7.5 6 7.5-6"></path></svg>
+			</a>
+		</nav>
+	</footer>
 	<script>
 		const menuButton = document.querySelector('.menu-toggle');
 		const sideMenu = document.querySelector('#side-menu');
-		const followButton = document.querySelector('.follow-button');
 		menuButton.addEventListener('click', (event) => {
 			const isOpen = sideMenu.classList.toggle('open');
 			event.currentTarget.setAttribute('aria-expanded', String(isOpen));
 		});
-		followButton.addEventListener('click', () => {
+		document.querySelector('.follow-button').addEventListener('click', (event) => {
+			const followButton = event.currentTarget;
 			const isFollowing = followButton.getAttribute('aria-pressed') === 'true';
 			followButton.setAttribute('aria-pressed', String(!isFollowing));
 			followButton.textContent = isFollowing ? 'Seguir' : 'Siguiendo';

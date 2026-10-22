@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Conversaciones y opiniones de la comunidad - Oíd Mortales">
+	<title>Foro público | OÍD MORTALES</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body class="forum-page">
+	<header class="site-header">
+		<nav class="topbar" aria-label="Navegación principal">
+			<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu">
+				<span></span><span></span><span></span>
+			</button>
+			<div class="tabs">
+				<a class="tab blue" href="Partidos.html">Partidos</a>
+				<a class="tab" href="Debates.html">Debates actuales</a>
+				<a class="tab blue" href="Como-voto.html">¿Cómo voto?</a>
+			</div>
+		</nav>
+		<div class="side-menu" id="side-menu">
+			<a href="Index.html">Inicio</a>
+			<a href="Partidos.html">Partidos</a>
+			<a href="Debates.html">Debates actuales</a>
+			<a href="Como-voto.html">¿Cómo voto?</a>
+			<a href="Eje-politico.html">Eje político</a>
+			<a href="Calendario.html">Calendario</a>
+			<a href="Encuestas.html">Encuestas</a>
+			<a href="Como-funciona-el-estado.html">¿Cómo funciona el estado?</a>
+			<a href="Memes.html">Memes</a>
+			<a href="Foro-publico.html" aria-current="page">Foro público</a>
+			<a href="Mapa-politico.html">Mapa político</a>
+			<a href="Noticias.html">Noticias</a>
+			<a href="Configuracion.html">Configuración</a>
+			<a href="Quienes-somos.html">Quiénes somos</a>
+		</div>
+		<div class="brand-header">
+			<div class="brand-line"><img class="brand" src="assets/oid-mortales.png" alt="Oíd Mortales"></div>
+			<h1 class="forum-title">Foro público</h1>
+		</div>
+	</header>
+
+	<main class="forum-main">
+		<section class="forum-composer" aria-labelledby="composer-title">
+			<h2 id="composer-title">Sumate a la conversación</h2>
+			<p class="forum-local-note">Las publicaciones y reacciones se guardan solo en este dispositivo; todavía no se comparten con otras personas.</p>
+			<form id="forum-form">
+				<label for="forum-author">Nombre (opcional)</label>
+				<input id="forum-author" name="author" type="text" maxlength="32" placeholder="Anónimo">
+				<label for="forum-message">¿Qué querés conversar?</label>
+				<textarea id="forum-message" name="message" rows="4" maxlength="1000" required placeholder="Escribí tu publicación..."></textarea>
+				<p class="forum-replying" id="forum-replying" hidden></p>
+				<div class="forum-form-actions">
+					<button class="forum-cancel-reply" id="cancel-reply" type="button" hidden>Cancelar respuesta</button>
+					<button class="forum-submit" type="submit">Publicar</button>
+				</div>
+			</form>
+			<p class="forum-feedback" id="forum-feedback" role="status" aria-live="polite"></p>
+		</section>
+		<section class="forum-thread" id="forum-thread" aria-label="Hilo de conversación del foro público" aria-live="polite" aria-relevant="additions"></section>
+	</main>
+
+	<footer class="forum-footer">
+		<nav class="footer-inner" aria-label="Enlaces de contacto">
+			<a class="footer-link" href="#instagram" aria-label="Instagram">
+				<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle class="icon-dot" cx="17.5" cy="6.8" r="1"></circle></svg>
+			</a>
+			<a class="footer-link" href="#donaciones" aria-label="Donaciones">
+				<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 8.8c0 5-8.5 10.3-8.5 10.3S3.5 13.8 3.5 8.8A4.3 4.3 0 0 1 12 7.1a4.3 4.3 0 0 1 8.5 1.7Z"></path></svg>
+			</a>
+			<a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">
+				<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 7 8 6 8-6"></path></svg>
+			</a>
+		</nav>
+	</footer>
+
+	<script>
+		const menuButton = document.querySelector('.menu-toggle');
+		const sideMenu = document.querySelector('#side-menu');
+		menuButton.addEventListener('click', () => {
+			const isOpen = sideMenu.classList.toggle('open');
+			menuButton.setAttribute('aria-expanded', String(isOpen));
+		});
+
+		const storageKey = 'oid-mortales-forum-v1';
+		const initialPosts = [
+			{ id: 'seed-risk-question', author: 'Usuario anónimo X', message: 'Hola! Alguien me podria explicar cómo o qué es el riesgo pais?', replyTo: null },
+			{ id: 'seed-risk-answer-1', author: 'Usuario anónimo Y', message: 'Es la probabilidad de que un pais no pague su deuda externa.', replyTo: 'seed-risk-question' },
+			{ id: 'seed-risk-answer-2', author: 'Usuario anónimo Z', message: 'significa mayor desconfianza y un costo de financiamiento más caro.', replyTo: 'seed-risk-question' },
+			{ id: 'seed-vote-warning', author: 'Usuario anónimo W', message: 'Tengan cuidado, hay alguien regalando turrones para que hagas voto cantado', replyTo: null },
+			{ id: 'seed-fmi-rumor', author: 'Usuario anónimo Q', message: 'FILTRACION! el gobierno va a suspender tratativas con el FMI', replyTo: null, status: 'Sujeto a revisión' },
+			{ id: 'seed-censored-post', author: 'Usuario anónimo R', message: 'MILEI HIJO DE P* ME C****** LA VIDA VOS Y TU GOBIERNO DE M*****', replyTo: null, status: 'Censurado' }
+		];
+		const thread = document.querySelector('#forum-thread');
+		const form = document.querySelector('#forum-form');
+		const authorInput = document.querySelector('#forum-author');
+		const messageInput = document.querySelector('#forum-message');
+		const feedback = document.querySelector('#forum-feedback');
+		const replyingLabel = document.querySelector('#forum-replying');
+		const cancelReplyButton = document.querySelector('#cancel-reply');
+		let replyTo = null;
+		let nextPostId = 0;
+		let savedState = { posts: [], likes: [], reports: [] };
+
+		function isValidSavedState(value) {
+			return value
+				&& Array.isArray(value.posts)
+				&& Array.isArray(value.likes)
+				&& Array.isArray(value.reports)
+				&& value.posts.every((post) => post && typeof post.id === 'string' && typeof post.author === 'string' && typeof post.message === 'string');
+		}
+
+		try {
+			const storedValue = localStorage.getItem(storageKey);
+			if (storedValue) {
+				const parsedValue = JSON.parse(storedValue);
+				if (!isValidSavedState(parsedValue)) {
+					throw new Error('Los datos guardados del foro tienen un formato inválido.');
+				}
+				savedState = parsedValue;
+			}
+		} catch (error) {
+			feedback.textContent = 'No se pudieron cargar los datos guardados del foro. Podés seguir participando, pero esta sesión no se guardará.';
+			console.error('No se pudo cargar el estado local del foro.', error);
+		}
+
+		const posts = [...initialPosts, ...savedState.posts];
+		const likedPosts = new Set(savedState.likes);
+		const reportedPosts = new Set(savedState.reports);
+		posts.forEach((post) => {
+			if (likedPosts.has(post.id)) post.likes = Math.max(1, post.likes || 0);
+		});
+
+		function saveState() {
+			try {
+				localStorage.setItem(storageKey, JSON.stringify({
+					posts: posts.filter((post) => post.local),
+					likes: [...likedPosts],
+					reports: [...reportedPosts]
+				}));
+				return true;
+			} catch (error) {
+				feedback.textContent = 'No se pudieron guardar los cambios en este dispositivo.';
+				console.error('No se pudo guardar el estado local del foro.', error);
+				return false;
+			}
+		}
+
+		function createPostCard(post) {
+			const article = document.createElement('article');
+			article.className = 'forum-post';
+			article.dataset.postId = post.id;
+
+			const heading = document.createElement('h3');
+			heading.className = 'post-author';
+			heading.textContent = post.author;
+			article.append(heading);
+
+			if (post.replyTo) {
+				const parentPost = posts.find((candidate) => candidate.id === post.replyTo);
+				const reply = document.createElement('p');
+				reply.className = 'post-reply';
+				reply.textContent = parentPost ? `En respuesta a ${parentPost.author}` : 'En respuesta a otra publicación';
+				article.append(reply);
+			}
+
+			const message = document.createElement('p');
+			message.className = 'post-message';
+			message.textContent = post.message;
+			article.append(message);
+
+			if (post.status) {
+				const status = document.createElement('p');
+				status.className = 'post-status';
+				status.setAttribute('role', 'status');
+				status.textContent = post.status;
+				article.append(status);
+			}
+
+			const actions = document.createElement('div');
+			actions.className = 'forum-post-actions';
+
+			const likeButton = document.createElement('button');
+			likeButton.className = 'forum-action';
+			likeButton.type = 'button';
+			likeButton.dataset.action = 'like';
+			likeButton.setAttribute('aria-pressed', String(likedPosts.has(post.id)));
+			likeButton.setAttribute('aria-label', likedPosts.has(post.id) ? 'Quitar Me gusta' : 'Me gusta esta publicación');
+			likeButton.textContent = `${likedPosts.has(post.id) ? '♥' : '♡'} Me gusta (${post.likes || 0})`;
+			actions.append(likeButton);
+
+			const replyButton = document.createElement('button');
+			replyButton.className = 'forum-action';
+			replyButton.type = 'button';
+			replyButton.dataset.action = 'reply';
+			replyButton.textContent = 'Responder';
+			actions.append(replyButton);
+
+			const reportButton = document.createElement('button');
+			reportButton.className = 'forum-action forum-report';
+			reportButton.type = 'button';
+			reportButton.dataset.action = 'report';
+			reportButton.disabled = reportedPosts.has(post.id);
+			reportButton.textContent = reportedPosts.has(post.id) ? 'Reportado' : 'Reportar';
+			actions.append(reportButton);
+
+			article.append(actions);
+			return article;
+		}
+
+		function renderThread() {
+			thread.replaceChildren();
+			const repliesByPost = new Map();
+			posts.forEach((post) => {
+				if (!post.replyTo) return;
+				if (!repliesByPost.has(post.replyTo)) repliesByPost.set(post.replyTo, []);
+				repliesByPost.get(post.replyTo).push(post);
+			});
+
+			function appendPost(post, parent) {
+				const card = createPostCard(post);
+				parent.append(card);
+				const replies = repliesByPost.get(post.id) || [];
+				if (replies.length) {
+					const replyGroup = document.createElement('div');
+					replyGroup.className = 'forum-replies';
+					replyGroup.setAttribute('aria-label', `Respuestas a ${post.author}`);
+					replies.forEach((reply) => appendPost(reply, replyGroup));
+					card.append(replyGroup);
+				}
+			}
+
+			posts.filter((post) => !post.replyTo || !posts.some((candidate) => candidate.id === post.replyTo))
+				.forEach((post) => appendPost(post, thread));
+		}
+
+		function setReplyTarget(post) {
+			replyTo = post.id;
+			replyingLabel.textContent = `Tu respuesta será para ${post.author}.`;
+			replyingLabel.hidden = false;
+			cancelReplyButton.hidden = false;
+			messageInput.focus();
+		}
+
+		cancelReplyButton.addEventListener('click', () => {
+			replyTo = null;
+			replyingLabel.hidden = true;
+			cancelReplyButton.hidden = true;
+		});
+
+		form.addEventListener('submit', (event) => {
+			event.preventDefault();
+			const message = messageInput.value.trim();
+			const author = authorInput.value.trim().slice(0, 32) || 'Anónimo';
+			if (!message) {
+				feedback.textContent = 'Escribí un mensaje antes de publicar.';
+				messageInput.focus();
+				return;
+			}
+			const post = {
+				id: `local-${Date.now()}-${nextPostId += 1}`,
+				author,
+				message: message.slice(0, 1000),
+				replyTo,
+				likes: 0,
+				local: true
+			};
+			posts.push(post);
+			saveState();
+			renderThread();
+			form.reset();
+			replyTo = null;
+			replyingLabel.hidden = true;
+			cancelReplyButton.hidden = true;
+			feedback.textContent = 'Tu publicación se agregó a este dispositivo.';
+			messageInput.focus();
+		});
+
+		thread.addEventListener('click', (event) => {
+			const button = event.target.closest('button[data-action]');
+			if (!button) return;
+			const article = button.closest('.forum-post');
+			const post = posts.find((candidate) => candidate.id === article?.dataset.postId);
+			if (!post) return;
+
+			if (button.dataset.action === 'reply') {
+				setReplyTarget(post);
+				return;
+			}
+			if (button.dataset.action === 'like') {
+				if (likedPosts.has(post.id)) {
+					likedPosts.delete(post.id);
+					post.likes = Math.max(0, (post.likes || 0) - 1);
+				} else {
+					likedPosts.add(post.id);
+					post.likes = (post.likes || 0) + 1;
+				}
+				saveState();
+				renderThread();
+				feedback.textContent = likedPosts.has(post.id) ? 'Marcaste Me gusta.' : 'Quitaste tu Me gusta.';
+				thread.querySelectorAll('.forum-post').forEach((card) => {
+					if (card.dataset.postId === post.id) card.querySelector('[data-action="like"]').focus();
+				});
+				return;
+			}
+			if (button.dataset.action === 'report') {
+				reportedPosts.add(post.id);
+				saveState();
+				renderThread();
+				feedback.textContent = 'Gracias. La publicación quedó marcada para revisión en este dispositivo.';
+				thread.querySelectorAll('.forum-post').forEach((card) => {
+					if (card.dataset.postId === post.id) card.querySelector('[data-action="like"]').focus();
+				});
+			}
+		});
+
+		renderThread();
+	</script>
+</body>
+</html>

@@ -32,7 +32,9 @@
 		.profile::after { width:18px; height:9px; margin-top:3px; border-radius:12px 12px 0 0; border-bottom:0; }
 		h1 { margin:28px 0 18px; font-size:clamp(2rem,4vw,3rem); line-height:1; }
 		main { padding:0 clamp(20px,5vw,64px) 100px; }
-		.feature { min-height:136px; margin-bottom:26px; border-radius:2px; background:var(--panel); }
+		.feature { min-height:136px; margin-bottom:26px; padding:22px clamp(18px,4vw,30px); border-radius:2px; background:var(--panel); }
+		.feature h2 { margin:0 0 8px; font-size:clamp(1.1rem,2.4vw,1.35rem); }
+		.feature p { max-width:760px; margin:0; line-height:1.5; }
 		.party-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; max-width:960px; margin:0 auto; }
 		.party-card { display:flex; align-items:center; gap:18px; min-height:120px; padding:18px; border:1px solid var(--ink); border-radius:14px; color:var(--ink); background:white; text-decoration:none; transition:transform .2s ease,box-shadow .2s ease; }
 		.party-card:hover,.party-card:focus-visible { transform:translateY(-3px); box-shadow:4px 4px 0 var(--ink); outline:none; }
@@ -55,20 +57,38 @@
 			<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu"><span></span><span></span><span></span></button>
 			<div class="tabs"><a class="tab active" href="#partidos" aria-current="page">Partidos</a><a class="tab" href="debates.html">Debates actuales</a><a class="tab blue" href="como-voto.html">¿Cómo voto?</a></div>
 		</nav>
-		<div class="side-menu" id="side-menu"><a href="#partidos">Partidos</a><a href="debates.html">Debates actuales</a><a href="como-voto.html">¿Cómo voto?</a></div>
-		<div class="brand-header"><div class="brand-line"><p class="brand">OÍD MORTALES</p><a class="profile" href="#perfil" aria-label="Perfil de usuario"></a></div><h1 id="partidos">Partidos políticos</h1></div>
+		<div class="side-menu" id="side-menu">
+			<a href="Index.html">Inicio</a>
+			<a href="Partidos.html" aria-current="page">Partidos</a>
+			<a href="Debates.html">Debates actuales</a>
+			<a href="Como-voto.html">¿Cómo voto?</a>
+			<a href="Eje-politico.html">Eje político</a>
+			<a href="Calendario.html">Calendario</a>
+			<a href="Encuestas.html">Encuestas</a>
+			<a href="Como-funciona-el-estado.html">¿Cómo funciona el estado?</a>
+			<a href="Memes.html">Memes</a>
+			<a href="Foro-publico.html">Foro público</a>
+			<a href="Mapa-politico.html">Mapa político</a>
+			<a href="Noticias.html">Noticias</a>
+			<a href="Configuracion.html">Configuración</a>
+			<a href="Quienes-somos.html">Quiénes somos</a>
+		</div>
+		<div class="brand-header"><div class="brand-line"><img class="brand" src="assets/oid-mortales.png" alt="Oíd Mortales"><a class="profile" href="Usuario.html" aria-label="Perfil de usuario"></a></div><h1 id="partidos">Partidos políticos</h1></div>
 	</header>
 	<main>
-		<section class="feature" aria-label="Contenido destacado"></section>
+		<section class="feature" aria-labelledby="party-intro-title">
+			<h2 id="party-intro-title">¿Qué son los partidos políticos?</h2>
+			<p>Los partidos reúnen a personas con ideas y propuestas para participar en la vida democrática y en las elecciones. Explorá las tarjetas para conocer algunas de las principales fuerzas políticas del país.</p>
+		</section>
 		<section class="party-grid" aria-label="Partidos políticos">
-			<a class="party-card" href="#jxc"><span class="party-logo jxc">JxC</span><h2 class="party-name">Juntos por el Cambio</h2></a>
-			<a class="party-card" href="#up"><span class="party-logo up">UP</span><h2 class="party-name">Unión por la Patria</h2></a>
-			<a class="party-card" href="#fi"><span class="party-logo fi">FI</span><h2 class="party-name">Frente de Izquierda</h2></a>
-			<a class="party-card" href="#mas"><span class="party-logo mas">MAS</span><h2 class="party-name">Nuevo MAS</h2></a>
-			<a class="party-card" href="#lds"><span class="party-logo lds">LdS</span><h2 class="party-name">Libres del Sur</h2></a>
-			<a class="party-card" href="#pyv"><span class="party-logo pyv">PyV</span><h2 class="party-name">Principios y Valores</h2></a>
-			<a class="party-card" href="#po"><span class="party-logo po">PO</span><h2 class="party-name">Política Obrera</h2></a>
-			<a class="party-card" href="#otras"><span class="party-logo other">OT</span><h2 class="party-name">Otras agrupaciones</h2></a>
+			<a class="party-card" href="https://es.wikipedia.org/wiki/Juntos_por_el_Cambio" target="_blank" rel="noopener noreferrer"><span class="party-logo jxc">JxC</span><h2 class="party-name">Juntos por el Cambio</h2></a>
+			<a class="party-card" href="https://es.wikipedia.org/wiki/Uni%C3%B3n_por_la_Patria" target="_blank" rel="noopener noreferrer"><span class="party-logo up">UP</span><h2 class="party-name">Unión por la Patria</h2></a>
+			<a class="party-card" href="https://es.wikipedia.org/wiki/Frente_de_Izquierda_y_de_Trabajadores_-_Unidad" target="_blank" rel="noopener noreferrer"><span class="party-logo fi">FI</span><h2 class="party-name">Frente de Izquierda</h2></a>
+			<a class="party-card" href="https://www.mas.org.ar/" target="_blank" rel="noopener noreferrer"><span class="party-logo mas">MAS</span><h2 class="party-name">Nuevo MAS</h2></a>
+			<a class="party-card" href="https://libresdelsur.org.ar/" target="_blank" rel="noopener noreferrer"><span class="party-logo lds">LdS</span><h2 class="party-name">Libres del Sur</h2></a>
+			<a class="party-card" href="https://principiosyvalores.org/" target="_blank" rel="noopener noreferrer"><span class="party-logo pyv">PyV</span><h2 class="party-name">Principios y Valores</h2></a>
+			<a class="party-card" href="https://politicaobrera.com/" target="_blank" rel="noopener noreferrer"><span class="party-logo po">PO</span><h2 class="party-name">Política Obrera</h2></a>
+			<a class="party-card" href="https://www.argentina.gob.ar/interior/dine/agrupaciones-politicas" target="_blank" rel="noopener noreferrer"><span class="party-logo other">OT</span><h2 class="party-name">Otras agrupaciones</h2></a>
 		</section>
 	</main>
 	<footer><div class="footer-inner" aria-label="Enlaces de contacto"><a class="footer-link" href="#instagram" aria-label="Instagram">ig</a><a class="footer-link" href="#donaciones" aria-label="Donaciones">$</a><a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">@</a></div></footer>

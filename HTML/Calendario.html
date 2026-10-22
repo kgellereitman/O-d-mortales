@@ -18,10 +18,23 @@
 			</div>
 		</nav>
 		<div class="side-menu" id="side-menu">
-			<a href="Index.html">Inicio</a><a href="Partidos.html">Partidos</a><a href="Debates.html">Debates actuales</a><a href="Como-voto.html">¿Cómo voto?</a>
+			<a href="Index.html">Inicio</a>
+			<a href="Partidos.html">Partidos</a>
+			<a href="Debates.html">Debates actuales</a>
+			<a href="Como-voto.html">¿Cómo voto?</a>
+			<a href="Eje-politico.html">Eje político</a>
+			<a href="Calendario.html" aria-current="page">Calendario</a>
+			<a href="Encuestas.html">Encuestas</a>
+			<a href="Como-funciona-el-estado.html">¿Cómo funciona el estado?</a>
+			<a href="Memes.html">Memes</a>
+			<a href="Foro-publico.html">Foro público</a>
+			<a href="Mapa-politico.html">Mapa político</a>
+			<a href="Noticias.html">Noticias</a>
+			<a href="Configuracion.html">Configuración</a>
+			<a href="Quienes-somos.html">Quiénes somos</a>
 		</div>
 		<div class="brand-header calendar-header">
-			<div class="brand-line"><p class="brand">OÍD MORTALES</p><a class="profile" href="#perfil" aria-label="Perfil de usuario"></a></div>
+			<div class="brand-line"><img class="brand" src="assets/oid-mortales.png" alt="Oíd Mortales"><a class="profile" href="Usuario.html" aria-label="Perfil de usuario"></a></div>
 			<h1>Calendario</h1>
 		</div>
 	</header>
@@ -42,34 +55,100 @@
 			<div class="calendar-weekdays" aria-hidden="true">
 				<span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
 			</div>
-			<div class="calendar-grid" id="calendar-grid" role="grid" aria-label="Días del mes"></div>
+			<div class="calendar-grid" id="calendar-grid" role="group" aria-label="Días del mes"></div>
 		</section>
 
 		<section class="upcoming" aria-labelledby="upcoming-title">
 			<h2 id="upcoming-title">Próximas fechas:</h2>
-			<ul class="event-list">
-				<li><span class="event-icon" aria-hidden="true">▣</span><time datetime="2025-02-24">24/2</time><span>Elecciones de diputados</span></li>
-				<li><span class="event-icon" aria-hidden="true">▣</span><time datetime="2025-03-06">6/3</time><span>Elecciones presidenciales</span></li>
-				<li><span class="event-icon" aria-hidden="true">▣</span><time datetime="2025-03-12">12/3</time><span>Sanción de ley</span></li>
-			</ul>
+			<p class="event-selection" id="event-selection" aria-live="polite">Fechas de este mes</p>
+			<ul class="event-list" id="event-list" aria-live="polite"></ul>
 		</section>
+		<p class="calendar-note">Las fechas electorales señaladas como ilustrativas son ejemplos de la interfaz, no un calendario oficial.</p>
 	</main>
 
-	<footer><div class="footer-inner" aria-label="Enlaces de contacto"><a class="footer-link" href="#instagram" aria-label="Instagram">ig</a><a class="footer-link" href="#donaciones" aria-label="Donaciones">$</a><a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">@</a></div></footer>
+	<footer class="calendar-footer">
+		<nav class="footer-inner" aria-label="Enlaces de contacto">
+			<a class="footer-link" href="#instagram" aria-label="Instagram"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"></rect><circle cx="12" cy="12" r="3.5"></circle><circle class="icon-dot" cx="17.5" cy="6.8" r="1"></circle></svg></a>
+			<a class="footer-link" href="#donaciones" aria-label="Donaciones"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 20.2s-7.5-4.4-7.5-10A4.1 4.1 0 0 1 12 7.7a4.1 4.1 0 0 1 7.5 2.5c0 5.6-7.5 10-7.5 10Z"></path></svg></a>
+			<a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect><path d="m4.5 7 7.5 6 7.5-6"></path></svg></a>
+		</nav>
+	</footer>
 	<script>
 		const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 		const monthSelect = document.querySelector('#month-select');
 		const yearSelect = document.querySelector('#year-select');
 		const calendarTitle = document.querySelector('#calendar-title');
 		const calendarGrid = document.querySelector('#calendar-grid');
-		const eventDates = { '2025-02-24': 'Elecciones de diputados', '2025-03-06': 'Elecciones presidenciales', '2025-03-12': 'Sanción de ley', '2025-09-09': 'Fecha clave', '2025-09-13': 'Fecha clave' };
-		let displayedDate = new Date(2025, 8, 1);
+		const eventList = document.querySelector('#event-list');
+		const eventSelection = document.querySelector('#event-selection');
+		const today = new Date();
+		let displayedDate = new Date(today.getFullYear(), today.getMonth(), 1);
+		let selectedDate = null;
+		const events = [
+			{ date: '2023-08-13', title: 'Elecciones PASO', kind: 'election' },
+			{ date: '2023-10-22', title: 'Elecciones Generales', kind: 'election' },
+			{ date: '2025-02-24', title: 'Elecciones de diputados (fecha ilustrativa)', kind: 'illustrative' },
+			{ date: '2025-03-06', title: 'Elecciones presidenciales (fecha ilustrativa)', kind: 'illustrative' },
+			{ date: '2025-03-12', title: 'Sanción de ley / Debate parlamentario (fecha ilustrativa)', kind: 'illustrative' }
+		];
 
 		monthNames.forEach((month, index) => monthSelect.add(new Option(month, index)));
-		for (let year = 2024; year <= 2030; year += 1) yearSelect.add(new Option(year, year));
+		for (let year = today.getFullYear() - 5; year <= today.getFullYear() + 10; year += 1) yearSelect.add(new Option(year, year));
 
 		function dateKey(year, month, day) {
 			return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+		}
+
+		function getEvents(year, month, day = null) {
+			const monthKey = `${year}-${String(month + 1).padStart(2, '0')}-`;
+			const selectedKey = day === null ? null : dateKey(year, month, day);
+			const visibleEvents = events.filter((item) => item.date.startsWith(monthKey) && (selectedKey === null || item.date === selectedKey));
+			if (month === 2 && (day === null || day === 24)) {
+				visibleEvents.push({
+					date: dateKey(year, month, 24),
+					title: 'Día Nacional de la Memoria por la Verdad y la Justicia',
+					kind: 'historical'
+				});
+			}
+			return visibleEvents.sort((first, second) => first.date.localeCompare(second.date));
+		}
+
+		function renderEvents() {
+			const year = displayedDate.getFullYear();
+			const month = displayedDate.getMonth();
+			const eventsForSelection = getEvents(year, month, selectedDate);
+			const selectionDescription = selectedDate === null
+				? `Fechas de ${monthNames[month]} de ${year}`
+				: `${selectedDate} de ${monthNames[month]} de ${year}`;
+			eventSelection.textContent = selectionDescription;
+			eventList.replaceChildren();
+
+			if (eventsForSelection.length === 0) {
+				const emptyMessage = document.createElement('li');
+				emptyMessage.className = 'event-empty';
+				emptyMessage.textContent = selectedDate === null
+					? 'No hay eventos programados para este mes.'
+					: 'No hay eventos programados para este día.';
+				eventList.append(emptyMessage);
+				return;
+			}
+
+			eventsForSelection.forEach((calendarEvent) => {
+				const item = document.createElement('li');
+				item.classList.add(`event-${calendarEvent.kind}`);
+				const [, eventMonth, eventDay] = calendarEvent.date.split('-');
+				const icon = document.createElement('span');
+				icon.className = 'event-icon';
+				icon.setAttribute('aria-hidden', 'true');
+				icon.textContent = '▣';
+				const date = document.createElement('time');
+				date.dateTime = calendarEvent.date;
+				date.textContent = `${Number(eventDay)}/${Number(eventMonth)}`;
+				const title = document.createElement('span');
+				title.textContent = calendarEvent.title;
+				item.append(icon, date, title);
+				eventList.append(item);
+			});
 		}
 
 		function renderCalendar() {
@@ -78,8 +157,14 @@
 			const firstDay = new Date(year, month, 1).getDay();
 			const daysInMonth = new Date(year, month + 1, 0).getDate();
 			calendarTitle.textContent = `${monthNames[month]} ${year}`;
-			monthSelect.value = month;
-			yearSelect.value = year;
+			monthSelect.value = String(month);
+			if (![...yearSelect.options].some((option) => Number(option.value) === year)) {
+				yearSelect.add(new Option(year, year));
+				[...yearSelect.options]
+					.sort((first, second) => Number(first.value) - Number(second.value))
+					.forEach((option) => yearSelect.append(option));
+			}
+			yearSelect.value = String(year);
 			calendarGrid.innerHTML = '';
 
 			for (let index = 0; index < firstDay; index += 1) {
@@ -90,25 +175,51 @@
 			}
 
 			for (let day = 1; day <= daysInMonth; day += 1) {
-				const key = dateKey(year, month, day);
 				const dayButton = document.createElement('button');
 				dayButton.className = 'calendar-day';
 				dayButton.type = 'button';
 				dayButton.textContent = day;
-				dayButton.setAttribute('role', 'gridcell');
-				if (eventDates[key]) {
-					dayButton.classList.add('has-event');
-					dayButton.title = eventDates[key];
-					dayButton.setAttribute('aria-label', `${day} de ${monthNames[month]}: ${eventDates[key]}`);
+				dayButton.setAttribute('aria-pressed', String(selectedDate === day));
+				dayButton.setAttribute('aria-label', `${day} de ${monthNames[month]} de ${year}`);
+				if (selectedDate === day) dayButton.classList.add('is-selected');
+				if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
+					dayButton.classList.add('is-today');
 				}
+				if (getEvents(year, month, day).length > 0) {
+					dayButton.classList.add('has-event');
+					const titles = getEvents(year, month, day).map((calendarEvent) => calendarEvent.title).join(', ');
+					dayButton.title = titles;
+					dayButton.setAttribute('aria-label', `${day} de ${monthNames[month]} de ${year}: ${titles}`);
+				}
+				dayButton.addEventListener('click', () => {
+					selectedDate = day;
+					renderCalendar();
+					renderEvents();
+					calendarGrid.querySelector(`[aria-pressed="true"]`).focus();
+				});
 				calendarGrid.append(dayButton);
 			}
+			renderEvents();
 		}
 
-		document.querySelector('#previous-month').addEventListener('click', () => { displayedDate.setMonth(displayedDate.getMonth() - 1); renderCalendar(); });
-		document.querySelector('#next-month').addEventListener('click', () => { displayedDate.setMonth(displayedDate.getMonth() + 1); renderCalendar(); });
-		monthSelect.addEventListener('change', () => { displayedDate.setMonth(Number(monthSelect.value)); renderCalendar(); });
-		yearSelect.addEventListener('change', () => { displayedDate.setFullYear(Number(yearSelect.value)); renderCalendar(); });
+		function changeMonth(offset) {
+			displayedDate = new Date(displayedDate.getFullYear(), displayedDate.getMonth() + offset, 1);
+			selectedDate = null;
+			renderCalendar();
+		}
+
+		document.querySelector('#previous-month').addEventListener('click', () => changeMonth(-1));
+		document.querySelector('#next-month').addEventListener('click', () => changeMonth(1));
+		monthSelect.addEventListener('change', () => {
+			displayedDate = new Date(displayedDate.getFullYear(), Number(monthSelect.value), 1);
+			selectedDate = null;
+			renderCalendar();
+		});
+		yearSelect.addEventListener('change', () => {
+			displayedDate = new Date(Number(yearSelect.value), displayedDate.getMonth(), 1);
+			selectedDate = null;
+			renderCalendar();
+		});
 		document.querySelector('.menu-toggle').addEventListener('click', (event) => {
 			const sideMenu = document.querySelector('#side-menu');
 			const isOpen = sideMenu.classList.toggle('open');

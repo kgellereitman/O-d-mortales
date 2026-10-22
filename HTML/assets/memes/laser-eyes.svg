@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-labelledby="title desc">
+	<title id="title">Orador político con ojos láser</title>
+	<desc id="desc">Figura política original de cabello plateado detrás de un atril, con rayos rojos saliendo de sus ojos.</desc>
+	<defs>
+		<linearGradient id="background" x2="1" y2="1"><stop stop-color="#526983"/><stop offset="1" stop-color="#171c2c"/></linearGradient>
+		<linearGradient id="jacket" x2="1" y2="1"><stop stop-color="#34445f"/><stop offset="1" stop-color="#202a3d"/></linearGradient>
+		<radialGradient id="eye-glow"><stop stop-color="#fff"/><stop offset=".2" stop-color="#ff8087"/><stop offset="1" stop-color="#ff203c" stop-opacity="0"/></radialGradient>
+		<linearGradient id="beam"><stop stop-color="#ff283e" stop-opacity=".25"/><stop offset=".5" stop-color="#ff344b"/><stop offset="1" stop-color="#ff283e" stop-opacity=".2"/></linearGradient>
+	</defs>
+	<rect width="500" height="500" fill="url(#background)"/>
+	<circle cx="250" cy="211" r="174" fill="#71849b" opacity=".13"/>
+	<path d="M63 500c7-98 39-145 112-169l75 74 75-74c72 22 104 76 112 169z" fill="url(#jacket)"/>
+	<path d="m176 329 74 76-55 62-69-118zm148 0-74 76 55 62 69-118z" fill="#f0eee8"/>
+	<path d="M231 392h38l22 108h-82z" fill="#bd4659"/>
+	<path d="M177 354 91 500h126l33-95zm146 0 86 146H283l-33-95z" fill="#d5d9dc"/>
+	<path d="M171 182c0-86 33-130 83-130 56 0 82 44 82 130v49c0 77-34 125-83 125s-82-49-82-125z" fill="#c99070"/>
+	<path d="M163 176c-17-56 2-132 53-151 18-7 30 1 42 11 18-14 45-11 58 7 31 7 44 41 39 72-3 18-10 33-19 45-8-26-13-49-15-69-23 19-49 30-76 35-23 5-48 6-73 3-1 16-4 31-9 47z" fill="#d6d6d1"/>
+	<path d="M177 112c22-30 45-45 72-44m11 2c27-13 54-7 70 9m-173 57c9-15 19-25 33-31m105-29c20 7 34 20 43 39" fill="none" stroke="#f2f0e8" stroke-linecap="round" stroke-width="18"/>
+	<path d="M190 207h40m40 0h40" stroke="#33303b" stroke-width="9" stroke-linecap="round"/>
+	<path d="M249 208h12m-12 2v42" fill="none" stroke="#70463f" stroke-linecap="round" stroke-width="6"/>
+	<path d="M225 285c17 13 36 13 53 0" fill="none" stroke="#884d47" stroke-linecap="round" stroke-width="7"/>
+	<path d="M195 207 0 152m110 55L0 260m305-53 195-55m-110 55 110 53" fill="none" stroke="url(#beam)" stroke-linecap="round" stroke-width="12"/>
+	<circle cx="207" cy="207" r="63" fill="url(#eye-glow)"/>
+	<circle cx="293" cy="207" r="63" fill="url(#eye-glow)"/>
+	<circle cx="207" cy="207" r="6" fill="#fff"/>
+	<circle cx="293" cy="207" r="6" fill="#fff"/>
+	<path d="M53 500h394l-23-45H76z" fill="#53627a"/>
+	<path d="M109 470h282" stroke="#8995a5" stroke-width="4" opacity=".6"/>
+</svg>

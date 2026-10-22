@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Conocé la misión, los valores y las áreas de trabajo de Oíd Mortales.">
+	<title>Quiénes somos | OÍD MORTALES</title>
+	<link rel="stylesheet" href="style.css">
+	<style>
+		.about-page { min-height:100vh; }
+		.about-page .topbar { position:sticky; top:0; z-index:5; }
+		.about-page .side-menu { position:fixed; top:58px; left:0; z-index:6; }
+		.about-page .about-header { padding-bottom:24px; }
+		.about-page h1 { margin-bottom:0; }
+		.about-main { display:grid; gap:18px; max-width:880px; margin:0 auto; padding-bottom:72px; }
+		.about-card { padding:clamp(20px,4vw,32px); border:1px solid #d6d7d5; border-radius:14px; background:#fff; box-shadow:0 5px 14px rgba(17,19,24,.08); }
+		.about-card h2 { margin:0 0 14px; font-size:clamp(1.2rem,2.5vw,1.6rem); line-height:1.2; }
+		.about-card p { margin:0; color:#383838; font-size:1rem; line-height:1.55; }
+		.card-kicker { display:block; margin-bottom:8px; color:#5f6268; font-size:.82rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+		.team-card { padding-bottom:26px; }
+		.team-intro { margin-bottom:22px !important; }
+		.team-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin:0; padding:0; list-style:none; }
+		.team-member { display:grid; justify-items:center; gap:9px; min-width:0; padding:18px 10px; border:1px solid #dedfdd; border-radius:12px; background:var(--paper); text-align:center; }
+		.team-avatar { display:grid; width:62px; height:62px; place-items:center; border:1px solid var(--ink); border-radius:50%; background:var(--blue); font-size:.92rem; font-weight:700; }
+		.team-member:nth-child(2) .team-avatar { background:#d9f0df; }
+		.team-member:nth-child(3) .team-avatar { background:#fff1b8; }
+		.team-member:nth-child(4) .team-avatar { background:#e8edcf; }
+		.team-member h3 { margin:0; font-size:1rem; line-height:1.2; }
+		.team-member p { color:#555960; font-size:.88rem; line-height:1.35; }
+		.about-page .about-footer { padding-top:0; }
+		.about-page .footer-inner { width:min(100%,420px); gap:30px; padding:12px 18px; }
+		.about-page .footer-link { width:40px; height:40px; }
+		.about-page .footer-link svg { width:20px; height:20px; fill:none; stroke:currentColor; stroke-linecap:round; stroke-linejoin:round; stroke-width:1.7; }
+		.about-page .footer-link .icon-dot { fill:currentColor; stroke:none; }
+		.about-page .footer-link:hover,.about-page .footer-link:focus-visible { color:var(--ink); background:var(--blue); outline:none; }
+		.about-page a:focus-visible,.about-page button:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }
+		@media (max-width:620px) {
+			.about-page .side-menu { top:52px; }
+			.about-main { gap:12px; padding-bottom:60px; }
+			.about-card { padding:20px; }
+			.team-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+			.team-member { padding:15px 8px; }
+			.team-avatar { width:56px; height:56px; }
+		}
+	</style>
+</head>
+<body class="about-page">
+	<header class="site-header">
+		<nav class="topbar" aria-label="Navegación principal">
+			<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu">
+				<span></span><span></span><span></span>
+			</button>
+			<div class="tabs">
+				<a class="tab blue" href="Partidos.html">Partidos</a>
+				<a class="tab" href="Debates.html">Debates actuales</a>
+				<a class="tab blue" href="Como-voto.html">¿Cómo voto?</a>
+			</div>
+		</nav>
+		<nav class="side-menu" id="side-menu" aria-label="Secciones del sitio">
+			<a href="Index.html">Inicio</a>
+			<a href="Partidos.html">Partidos</a>
+			<a href="Debates.html">Debates actuales</a>
+			<a href="Como-voto.html">¿Cómo voto?</a>
+			<a href="Eje-politico.html">Eje político</a>
+			<a href="Calendario.html">Calendario</a>
+			<a href="Encuestas.html">Encuestas</a>
+			<a href="Como-funciona-el-estado.html">¿Cómo funciona el estado?</a>
+			<a href="Memes.html">Memes</a>
+			<a href="Foro-publico.html">Foro público</a>
+			<a href="Mapa-politico.html">Mapa político</a>
+			<a href="Noticias.html">Noticias</a>
+			<a href="Configuracion.html">Configuración</a>
+			<a href="Quienes-somos.html" aria-current="page">Quiénes somos</a>
+		</nav>
+		<div class="brand-header about-header">
+			<div class="brand-line">
+				<img class="brand" src="assets/oid-mortales.png" alt="Oíd Mortales">
+				<a class="profile" href="Usuario.html" aria-label="Perfil de usuario"></a>
+			</div>
+			<h1>Quiénes somos</h1>
+		</div>
+	</header>
+
+	<main class="about-main">
+		<article class="about-card" aria-labelledby="mission-title">
+			<span class="card-kicker">Nuestra misión</span>
+			<h2 id="mission-title">Misión y Valores</h2>
+			<p>Presentamos nuestra misión y valores. Somos un espacio independiente creado para promover la participación ciudadana, ofreciendo información clara, neutral y accesible sobre la política argentina y el sistema electoral.</p>
+		</article>
+
+		<article class="about-card" aria-labelledby="participation-title">
+			<h2 id="participation-title">¿Por qué creemos en la participación de todos?</h2>
+			<p>Creemos que una ciudadanía informada es la base de una democracia fuerte. Buscamos derribar barreras informativas y acercar el funcionamiento del Estado, los debates clave y las propuestas políticas a todas las personas.</p>
+		</article>
+
+		<section class="about-card team-card" aria-labelledby="team-title">
+			<h2 id="team-title">Quienes impulsan el proyecto</h2>
+			<p class="team-intro">Un equipo interdisciplinario que trabaja para acercar la política a toda la ciudadanía.</p>
+			<ul class="team-grid" aria-label="Áreas colaboradoras del proyecto">
+				<li class="team-member">
+					<span class="team-avatar" aria-hidden="true">DES</span>
+					<h3>Desarrollo</h3>
+					<p>Tecnología y experiencia digital</p>
+				</li>
+				<li class="team-member">
+					<span class="team-avatar" aria-hidden="true">INV</span>
+					<h3>Investigación</h3>
+					<p>Fuentes y contexto político</p>
+				</li>
+				<li class="team-member">
+					<span class="team-avatar" aria-hidden="true">CON</span>
+					<h3>Contenido</h3>
+					<p>Información clara y accesible</p>
+				</li>
+				<li class="team-member">
+					<span class="team-avatar" aria-hidden="true">DIS</span>
+					<h3>Diseño</h3>
+					<p>Comunicación y diseño visual</p>
+				</li>
+			</ul>
+		</section>
+	</main>
+
+	<footer class="about-footer">
+		<nav class="footer-inner" aria-label="Enlaces de contacto">
+			<a class="footer-link" href="#instagram" aria-label="Instagram">
+				<svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"></rect><circle cx="12" cy="12" r="3.5"></circle><circle class="icon-dot" cx="17.5" cy="6.8" r="1"></circle></svg>
+			</a>
+			<a class="footer-link" href="#donaciones" aria-label="Donaciones">
+				<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 20.2s-7.5-4.4-7.5-10A4.1 4.1 0 0 1 12 7.7a4.1 4.1 0 0 1 7.5 2.5c0 5.6-7.5 10-7.5 10Z"></path></svg>
+			</a>
+			<a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">
+				<svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect><path d="m4.5 7 7.5 6 7.5-6"></path></svg>
+			</a>
+		</nav>
+	</footer>
+	<script>
+		const menuButton = document.querySelector('.menu-toggle');
+		const sideMenu = document.querySelector('#side-menu');
+		menuButton.addEventListener('click', () => {
+			const isOpen = sideMenu.classList.toggle('open');
+			menuButton.setAttribute('aria-expanded', String(isOpen));
+		});
+	</script>
+</body>
+</html>

@@ -3,63 +3,72 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Eje político de Horacio Rodríguez Larreta - Oíd Mortales">
+	<meta name="description" content="Explorá los ejes temáticos de la ficha política de Horacio Rodríguez Larreta.">
 	<title>Eje político | OÍD MORTALES</title>
-	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="style.css">
 	<style>
-		:root { --purple:#8d6bb8; --light-purple:#ddcff0; --axis-blue:#9edff2; --red:#d55a56; --muted:#5f6268; }
-		.axis-page { min-height:100vh; }
-		.axis-page .topbar { min-height:58px; }
-		.axis-page .menu-toggle { cursor:pointer; }
-		.axis-page .tab { cursor:pointer; }
-		.axis-page .tab.active { background:var(--blue); }
-		.axis-page .axis-header { padding-bottom:24px; }
-		.axis-page h1 { margin-bottom:0; }
-		.axis-main { max-width:1060px; margin:0 auto; padding-bottom:72px; }
-		.candidate-summary { display:grid; grid-template-columns:minmax(210px,.75fr) 1.25fr; gap:28px; align-items:center; margin-bottom:34px; }
-		.candidate-card { display:flex; align-items:center; gap:18px; min-width:0; }
-		.candidate-photo { display:block; flex:0 0 112px; width:112px; height:112px; border:2px solid var(--ink); border-radius:50%; object-fit:cover; object-position:center; background:var(--blue); }
-		.candidate-details { min-width:0; }
-		.candidate-details p { margin:0 0 8px; line-height:1.25; }
-		.candidate-details p:last-child { margin-bottom:0; }
-		.candidate-details strong { display:block; margin-bottom:2px; font-size:.84rem; text-transform:uppercase; letter-spacing:.08em; }
-		.candidate-details span { font-size:clamp(1rem,2vw,1.2rem); font-weight:700; }
-		.editorial-note { margin:0; padding:20px 22px; border:2px solid var(--red); border-radius:16px; background:#fff; font-size:clamp(.95rem,1.6vw,1.08rem); line-height:1.42; }
-		.editorial-note::before { content:"Nota editorial"; display:block; margin-bottom:8px; color:var(--red); font-size:.78rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
-		.axis-list { display:grid; gap:20px; }
-		.axis-item { padding:20px 22px 18px; border:1px solid var(--ink); border-radius:14px; background:#fff; }
-		.axis-item:nth-child(4n + 1) { background:#fff1b8; }
-		.axis-item:nth-child(4n + 2) { background:#d9f0df; }
-		.axis-item:nth-child(4n + 3) { background:#ccefff; }
-		.axis-item:nth-child(4n) { background:#e8edcf; }
-		.axis-title { display:flex; align-items:center; justify-content:center; gap:7px; margin:0 0 17px; font-size:clamp(1.05rem,2vw,1.3rem); line-height:1.1; text-align:center; }
-		.info { display:inline-grid; width:18px; height:18px; place-items:center; border:1px solid currentColor; border-radius:50%; font-family:Arial,sans-serif; font-size:.72rem; font-weight:700; }
-		.axis-scale { display:grid; grid-template-columns:minmax(120px,1fr) minmax(220px,2fr) minmax(120px,1fr); gap:14px; align-items:center; }
-		.axis-label { font-size:.92rem; line-height:1.18; }
-		.axis-label:last-child { text-align:right; }
-		.axis-track { position:relative; height:14px; border:1px solid var(--ink); border-radius:999px; background:linear-gradient(90deg,var(--purple) 0 50%,var(--axis-blue) 50% 100%); }
-		.axis-track::before { content:""; position:absolute; inset:5px 8px; border-top:1px dashed rgba(17,19,24,.7); }
-		.axis-track::after { content:""; position:absolute; top:50%; left:50%; width:24px; height:24px; border:2px solid var(--ink); border-radius:50%; background:#fff; transform:translate(-50%,-50%); box-shadow:0 0 0 3px rgba(255,255,255,.55); }
-		.axis-caption { display:block; margin-top:10px; color:var(--muted); font-size:.75rem; text-align:center; }
-		.axis-page footer { padding-top:0; }
-		@media (max-width:720px) {
-			.axis-main { padding-bottom:48px; }
-			.candidate-summary { grid-template-columns:1fr; gap:18px; margin-bottom:26px; }
-			.candidate-card { align-items:flex-start; }
-			.candidate-photo { flex-basis:92px; width:92px; height:92px; }
-			.editorial-note { padding:16px 18px; }
-			.axis-list { gap:14px; }
-			.axis-item { padding:17px 15px 15px; }
-			.axis-scale { grid-template-columns:1fr 2fr 1fr; gap:8px; }
-			.axis-label { font-size:.78rem; }
-			.axis-track { height:12px; }
-			.axis-track::after { width:20px; height:20px; }
+		:root { --axis-purple: #8d6bb8; --axis-light-purple: #ddcff0; --axis-blue: #9edff2; --axis-red: #d55a56; --axis-muted: #5f6268; }
+		.axis-page { min-height: 100vh; }
+		.axis-page .axis-header { padding-bottom: 24px; }
+		.axis-page h1 { margin-bottom: 0; }
+		.axis-main { max-width: 1060px; margin: 0 auto; padding-bottom: 116px; }
+		.candidate-summary { display: grid; grid-template-columns: minmax(300px, .9fr) 1.1fr; gap: 28px; align-items: center; margin-bottom: 30px; }
+		.candidate-card { display: flex; align-items: center; gap: 18px; min-width: 0; }
+		.candidate-photo { display: block; flex: 0 0 112px; width: 112px; height: 112px; border: 4px solid var(--axis-purple); border-radius: 50%; object-fit: cover; object-position: center; background: var(--axis-light-purple); }
+		.candidate-details { min-width: 0; }
+		.candidate-details p { margin: 0 0 9px; line-height: 1.25; }
+		.candidate-details p:last-child { margin-bottom: 0; }
+		.candidate-details strong { display: block; margin-bottom: 3px; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+		.candidate-details span { font-size: clamp(1rem, 2vw, 1.18rem); font-weight: 700; }
+		.editorial-note { margin: 0; padding: 19px 21px; border: 2px solid var(--axis-red); border-radius: 16px; background: #fff; font-size: clamp(.92rem, 1.6vw, 1.04rem); line-height: 1.42; }
+		.editorial-note strong { display: block; margin-bottom: 6px; color: var(--axis-red); font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; }
+		.axis-intro { margin: 0 0 18px; color: #464950; font-size: .92rem; line-height: 1.45; }
+		.axis-list { display: grid; gap: 15px; }
+		.axis-item { --track-start: var(--axis-purple); --track-end: var(--axis-blue); padding: 17px 20px 15px; border: 1px solid #c6c2cb; border-radius: 14px; background: #fff; }
+		.axis-item:nth-child(even) { --track-start: var(--axis-blue); --track-end: var(--axis-purple); background: #f4f0f8; }
+		.axis-title { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 0 15px; font-size: clamp(1rem, 2vw, 1.2rem); line-height: 1.15; text-align: center; }
+		.axis-info-button { display: inline-grid; flex: 0 0 22px; width: 22px; height: 22px; place-items: center; padding: 0; border: 1px solid currentColor; border-radius: 50%; color: var(--ink); background: transparent; font-family: Arial, sans-serif; font-size: .8rem; font-weight: 700; cursor: pointer; }
+		.axis-info-button:hover, .axis-info-button:focus-visible, .axis-info-button[aria-expanded="true"] { color: #fff; background: var(--ink); outline: 2px solid var(--axis-blue); outline-offset: 2px; }
+		.axis-help { max-width: 680px; margin: -5px auto 14px; color: #454850; font-size: .88rem; line-height: 1.45; text-align: center; }
+		.axis-scale { display: grid; grid-template-columns: minmax(120px, 1fr) minmax(180px, 2.5fr) minmax(120px, 1fr); gap: 14px; align-items: center; }
+		.axis-label { font-size: .84rem; line-height: 1.2; }
+		.axis-label:last-child { text-align: right; }
+		.axis-control { min-width: 0; }
+		.axis-range { display: block; width: 100%; height: 36px; margin: 0; appearance: none; -webkit-appearance: none; background: transparent; cursor: pointer; touch-action: pan-y; }
+		.axis-range:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 999px; }
+		.axis-range::-webkit-slider-runnable-track { height: 10px; border: 1px solid var(--ink); border-radius: 999px; background: linear-gradient(90deg, var(--track-start), var(--track-end)); }
+		.axis-range::-moz-range-track { height: 10px; border: 1px solid var(--ink); border-radius: 999px; background: linear-gradient(90deg, var(--track-start), var(--track-end)); }
+		.axis-range::-webkit-slider-thumb { width: 38px; height: 38px; margin-top: -15px; appearance: none; -webkit-appearance: none; border: 0; background: url("sol-de-mayo.svg") center / contain no-repeat; cursor: grab; }
+		.axis-range::-moz-range-thumb { width: 38px; height: 38px; border: 0; border-radius: 50%; background: url("sol-de-mayo.svg") center / contain no-repeat; cursor: grab; }
+		.axis-range:active::-webkit-slider-thumb, .axis-range:active::-moz-range-thumb { cursor: grabbing; }
+		.axis-value { display: block; min-height: 1.2em; margin-top: 5px; color: var(--axis-muted); font-size: .75rem; text-align: center; }
+		.axis-page .axis-footer { position: fixed; inset: auto 0 0; z-index: 4; padding: 12px 20px max(16px, env(safe-area-inset-bottom)); pointer-events: none; }
+		.axis-page .footer-inner { width: min(100%, 420px); padding: 10px 18px; border: 1px solid #383838; box-shadow: 0 4px 20px rgba(0, 0, 0, .2); pointer-events: auto; }
+		.axis-page .footer-link { width: 40px; height: 40px; }
+		.axis-page .footer-link svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
+		.axis-page .footer-link .icon-dot { fill: currentColor; stroke: none; }
+		.axis-page .footer-link:hover, .axis-page .footer-link:focus-visible { color: var(--ink); background: var(--blue); outline: none; }
+		@media (max-width: 720px) {
+			.axis-main { padding-bottom: 112px; }
+			.candidate-summary { grid-template-columns: 1fr; gap: 18px; margin-bottom: 24px; }
+			.candidate-photo { flex-basis: 92px; width: 92px; height: 92px; }
+			.editorial-note { padding: 16px 18px; }
+			.axis-list { gap: 12px; }
+			.axis-item { padding: 16px 14px 14px; }
+			.axis-scale { grid-template-columns: minmax(82px, 1fr) minmax(100px, 2fr) minmax(82px, 1fr); gap: 8px; }
+			.axis-label { font-size: .73rem; }
 		}
-		@media (max-width:420px) {
-			.axis-scale { grid-template-columns:1fr; gap:8px; }
-			.axis-label:last-child { text-align:left; }
-			.axis-track { grid-row:2; }
-			.axis-caption { display:none; }
+		@media (max-width: 420px) {
+			.candidate-card { align-items: flex-start; }
+			.candidate-photo { flex-basis: 82px; width: 82px; height: 82px; }
+			.axis-scale { grid-template-columns: 1fr 1fr; gap: 5px 9px; }
+			.axis-label:last-child { text-align: right; }
+			.axis-control { grid-column: 1 / -1; grid-row: 2; }
+			.axis-range { height: 34px; }
+			.axis-page .axis-footer { padding-right: 16px; padding-left: 16px; }
+		}
+		@media (prefers-reduced-motion: reduce) {
+			.axis-range { scroll-behavior: auto; }
 		}
 	</style>
 </head>
@@ -68,54 +77,158 @@
 		<nav class="topbar" aria-label="Navegación principal">
 			<button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="side-menu"><span></span><span></span><span></span></button>
 			<div class="tabs">
-				<a class="tab active" href="partidos.html">Partidos</a>
-				<a class="tab" href="debates.html">Debates actuales</a>
-				<a class="tab blue" href="como-voto.html">¿Cómo voto?</a>
+				<a class="tab active" href="Partidos.html">Partidos</a>
+				<a class="tab" href="Debates.html">Debates actuales</a>
+				<a class="tab blue" href="Como-voto.html">¿Cómo voto?</a>
 			</div>
 		</nav>
 		<div class="side-menu" id="side-menu">
-			<a href="index.html">Inicio</a><a href="partidos.html">Partidos</a><a href="debates.html">Debates actuales</a><a href="como-voto.html">¿Cómo voto?</a>
+			<a href="Index.html">Inicio</a>
+			<a href="Partidos.html">Partidos</a>
+			<a href="Debates.html">Debates actuales</a>
+			<a href="Como-voto.html">¿Cómo voto?</a>
+			<a href="Eje-politico.html" aria-current="page">Eje político</a>
+			<a href="Calendario.html">Calendario</a>
+			<a href="Encuestas.html">Encuestas</a>
+			<a href="Como-funciona-el-estado.html">¿Cómo funciona el estado?</a>
+			<a href="Memes.html">Memes</a>
+			<a href="Foro-publico.html">Foro público</a>
+			<a href="Mapa-politico.html">Mapa político</a>
+			<a href="Noticias.html">Noticias</a>
+			<a href="Configuracion.html">Configuración</a>
+			<a href="Quienes-somos.html">Quiénes somos</a>
 		</div>
 		<div class="brand-header axis-header">
-			<div class="brand-line"><p class="brand">OÍD MORTALES</p><a class="profile" href="#perfil" aria-label="Perfil de usuario"></a></div>
-			<h1>Eje político</h1>
+			<div class="brand-line"><img class="brand" src="assets/oid-mortales.png" alt="Oíd Mortales"><a class="profile" href="Usuario.html" aria-label="Perfil de usuario"></a></div>
+			<h1>Ficha ideológica</h1>
 		</div>
 	</header>
 
 	<main class="axis-main">
 		<section class="candidate-summary" aria-label="Perfil del candidato">
 			<div class="candidate-card">
-				<img class="candidate-photo" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=320&q=85" alt="Retrato de referencia de Horacio Rodríguez Larreta">
+				<img class="candidate-photo" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&amp;fit=crop&amp;w=320&amp;q=85" alt="Retrato ilustrativo del perfil de Horacio Rodríguez Larreta">
 				<div class="candidate-details">
 					<p><strong>Partido</strong><span>JxC</span></p>
 					<p><strong>Presidente</strong><span>Horacio Rodríguez Larreta</span></p>
 				</div>
 			</div>
-			<p class="editorial-note">Los ejes no necesariamente representan izquierda y derecha. Si encontrás problemas en la información presentada, no dudes en tener un debate con nosotros o sugerirlo.</p>
+			<p class="editorial-note"><strong>Aclaración</strong>Los ejes no necesariamente representan izquierda y derecha. Si encontrás problemas en la información presentada, no dudes en hacer el reclamo y lo atenderemos enseguida.</p>
 		</section>
 
-		<section class="axis-list" aria-label="Ejes temáticos de la posición política">
-			<article class="axis-item"><h2 class="axis-title">Economía <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Más control</span><div class="axis-track" role="img" aria-label="Posición central entre más control y más mercado"></div><span class="axis-label">Más mercado</span></div><small class="axis-caption">Posición del candidato</small></article>
-			<article class="axis-item"><h2 class="axis-title">Derechos laborales <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Proteccionismo</span><div class="axis-track" role="img" aria-label="Posición central entre proteccionismo y flexibilización"></div><span class="axis-label">Flexibilización</span></div><small class="axis-caption">Posición del candidato</small></article>
-			<article class="axis-item"><h2 class="axis-title">Medio ambiente <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Regulación/Protección</span><div class="axis-track" role="img" aria-label="Posición central entre regulación y desarrollo"></div><span class="axis-label">Desarrollo/Explotación</span></div><small class="axis-caption">Posición del candidato</small></article>
-			<article class="axis-item"><h2 class="axis-title">Defensa y seguridad <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Garantismo/Prevención</span><div class="axis-track" role="img" aria-label="Posición central entre garantismo y mano dura"></div><span class="axis-label">Mano dura/Proactiva</span></div><small class="axis-caption">Posición del candidato</small></article>
-			<article class="axis-item"><h2 class="axis-title">Derechos humanos <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Memoria</span><div class="axis-track" role="img" aria-label="Posición central entre memoria y soberanía"></div><span class="axis-label">Soberanía</span></div><small class="axis-caption">Posición del candidato</small></article>
-			<article class="axis-item"><h2 class="axis-title">Globalización vs soberanía <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Enfoque nacional</span><div class="axis-track" role="img" aria-label="Posición central entre enfoque nacional e integración global"></div><span class="axis-label">Integración global</span></div><small class="axis-caption">Posición del candidato</small></article>
-			<article class="axis-item"><h2 class="axis-title">Estado vs mercado <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Presencia estatal</span><div class="axis-track" role="img" aria-label="Posición central entre presencia estatal y libre mercado"></div><span class="axis-label">Libre mercado</span></div><small class="axis-caption">Posición del candidato</small></article>
-			<article class="axis-item"><h2 class="axis-title">Políticas sociales <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Universalización</span><div class="axis-track" role="img" aria-label="Posición central entre universalización y focalización"></div><span class="axis-label">Focalización</span></div><small class="axis-caption">Posición del candidato</small></article>
-			<article class="axis-item"><h2 class="axis-title">Sindicatos <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Autonomía</span><div class="axis-track" role="img" aria-label="Posición central entre autonomía y regulación"></div><span class="axis-label">Regulación</span></div><small class="axis-caption">Posición del candidato</small></article>
-			<article class="axis-item"><h2 class="axis-title">Política exterior <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Multilateralismo</span><div class="axis-track" role="img" aria-label="Posición central entre multilateralismo y alineación estratégica"></div><span class="axis-label">Alineación estratégica</span></div><small class="axis-caption">Posición del candidato</small></article>
-			<article class="axis-item"><h2 class="axis-title">Migración <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Humanitaria/Abierta</span><div class="axis-track" role="img" aria-label="Posición central entre una migración humanitaria y el control"></div><span class="axis-label">Control/Restricciones</span></div><small class="axis-caption">Posición del candidato</small></article>
-			<article class="axis-item"><h2 class="axis-title">Igualdad de género <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Agenda inclusiva</span><div class="axis-track" role="img" aria-label="Posición central entre agenda inclusiva y tradicional"></div><span class="axis-label">Tradicional</span></div><small class="axis-caption">Posición del candidato</small></article>
-			<article class="axis-item"><h2 class="axis-title">Corrupción <span class="info" title="Más información" aria-label="Más información">i</span></h2><div class="axis-scale"><span class="axis-label">Institucionalismo</span><div class="axis-track" role="img" aria-label="Posición central entre institucionalismo y transparencia"></div><span class="axis-label">Transparencia</span></div><small class="axis-caption">Posición del candidato</small></article>
+		<p class="axis-intro">Mové el Sol de Mayo para explorar cada eje. Las posiciones comienzan en un punto neutral y son ajustables; no representan una valoración verificada del candidato.</p>
+		<section class="axis-list" aria-label="Ejes temáticos interactivos">
+			<article class="axis-item">
+				<h2 class="axis-title">Economía <button class="axis-info-button" type="button" aria-label="Información sobre Economía" aria-expanded="false" aria-controls="axis-help-economia">i</button></h2>
+				<p class="axis-help" id="axis-help-economia" hidden>Compara el grado de intervención y regulación estatal con la libertad de mercado.</p>
+				<div class="axis-scale"><span class="axis-label">Intervencionismo</span><div class="axis-control"><input class="axis-range" type="range" min="0" max="100" value="50" aria-label="Economía: de intervencionismo a libre mercado" aria-valuetext="Posición neutral, 50 de 100"><output class="axis-value">Posición neutral · 50/100</output></div><span class="axis-label">Libre mercado</span></div>
+			</article>
+			<article class="axis-item">
+				<h2 class="axis-title">Derechos laborales <button class="axis-info-button" type="button" aria-label="Información sobre Derechos laborales" aria-expanded="false" aria-controls="axis-help-laborales">i</button></h2>
+				<p class="axis-help" id="axis-help-laborales" hidden>Explora el equilibrio entre protecciones laborales y flexibilidad en las relaciones de trabajo.</p>
+				<div class="axis-scale"><span class="axis-label">Mayor protección</span><div class="axis-control"><input class="axis-range" type="range" min="0" max="100" value="50" aria-label="Derechos laborales: de mayor protección a mayor flexibilidad" aria-valuetext="Posición neutral, 50 de 100"><output class="axis-value">Posición neutral · 50/100</output></div><span class="axis-label">Mayor flexibilidad</span></div>
+			</article>
+			<article class="axis-item">
+				<h2 class="axis-title">Medio ambiente <button class="axis-info-button" type="button" aria-label="Información sobre Medio ambiente" aria-expanded="false" aria-controls="axis-help-ambiente">i</button></h2>
+				<p class="axis-help" id="axis-help-ambiente" hidden>Contrasta la prioridad de la protección ambiental con la explotación de recursos y el desarrollo productivo.</p>
+				<div class="axis-scale"><span class="axis-label">Protección ambiental</span><div class="axis-control"><input class="axis-range" type="range" min="0" max="100" value="50" aria-label="Medio ambiente: de protección ambiental a explotación de recursos" aria-valuetext="Posición neutral, 50 de 100"><output class="axis-value">Posición neutral · 50/100</output></div><span class="axis-label">Explotación de recursos</span></div>
+			</article>
+			<article class="axis-item">
+				<h2 class="axis-title">Defensa y seguridad <button class="axis-info-button" type="button" aria-label="Información sobre Defensa y seguridad" aria-expanded="false" aria-controls="axis-help-seguridad">i</button></h2>
+				<p class="axis-help" id="axis-help-seguridad" hidden>Presenta distintas prioridades entre prevención, garantías y políticas de seguridad más estrictas.</p>
+				<div class="axis-scale"><span class="axis-label">Prevención y garantías</span><div class="axis-control"><input class="axis-range" type="range" min="0" max="100" value="50" aria-label="Defensa y seguridad: de prevención y garantías a control estricto" aria-valuetext="Posición neutral, 50 de 100"><output class="axis-value">Posición neutral · 50/100</output></div><span class="axis-label">Control estricto</span></div>
+			</article>
+			<article class="axis-item">
+				<h2 class="axis-title">Derechos humanos <button class="axis-info-button" type="button" aria-label="Información sobre Derechos humanos" aria-expanded="false" aria-controls="axis-help-humanos">i</button></h2>
+				<p class="axis-help" id="axis-help-humanos" hidden>Reúne enfoques sobre memoria, justicia, libertades y garantías fundamentales.</p>
+				<div class="axis-scale"><span class="axis-label">Garantías y memoria</span><div class="axis-control"><input class="axis-range" type="range" min="0" max="100" value="50" aria-label="Derechos humanos: de garantías y memoria a orden y soberanía" aria-valuetext="Posición neutral, 50 de 100"><output class="axis-value">Posición neutral · 50/100</output></div><span class="axis-label">Orden y soberanía</span></div>
+			</article>
+			<article class="axis-item">
+				<h2 class="axis-title">Globalización vs soberanía <button class="axis-info-button" type="button" aria-label="Información sobre Globalización vs soberanía" aria-expanded="false" aria-controls="axis-help-globalizacion">i</button></h2>
+				<p class="axis-help" id="axis-help-globalizacion" hidden>Compara la prioridad de la autonomía nacional con la integración y cooperación internacional.</p>
+				<div class="axis-scale"><span class="axis-label">Soberanía nacional</span><div class="axis-control"><input class="axis-range" type="range" min="0" max="100" value="50" aria-label="Globalización y soberanía: de soberanía nacional a integración global" aria-valuetext="Posición neutral, 50 de 100"><output class="axis-value">Posición neutral · 50/100</output></div><span class="axis-label">Integración global</span></div>
+			</article>
+			<article class="axis-item">
+				<h2 class="axis-title">Estado vs mercado <button class="axis-info-button" type="button" aria-label="Información sobre Estado vs mercado" aria-expanded="false" aria-controls="axis-help-estado">i</button></h2>
+				<p class="axis-help" id="axis-help-estado" hidden>Explora la distribución de responsabilidades entre la gestión estatal y la iniciativa privada.</p>
+				<div class="axis-scale"><span class="axis-label">Más Estado</span><div class="axis-control"><input class="axis-range" type="range" min="0" max="100" value="50" aria-label="Estado y mercado: de más Estado a más mercado" aria-valuetext="Posición neutral, 50 de 100"><output class="axis-value">Posición neutral · 50/100</output></div><span class="axis-label">Más mercado</span></div>
+			</article>
+			<article class="axis-item">
+				<h2 class="axis-title">Políticas sociales <button class="axis-info-button" type="button" aria-label="Información sobre Políticas sociales" aria-expanded="false" aria-controls="axis-help-sociales">i</button></h2>
+				<p class="axis-help" id="axis-help-sociales" hidden>Contrasta políticas sociales universales con programas dirigidos a grupos o necesidades específicas.</p>
+				<div class="axis-scale"><span class="axis-label">Universalidad</span><div class="axis-control"><input class="axis-range" type="range" min="0" max="100" value="50" aria-label="Políticas sociales: de universalidad a focalización" aria-valuetext="Posición neutral, 50 de 100"><output class="axis-value">Posición neutral · 50/100</output></div><span class="axis-label">Focalización</span></div>
+			</article>
+			<article class="axis-item">
+				<h2 class="axis-title">Sindicatos <button class="axis-info-button" type="button" aria-label="Información sobre Sindicatos" aria-expanded="false" aria-controls="axis-help-sindicatos">i</button></h2>
+				<p class="axis-help" id="axis-help-sindicatos" hidden>Considera la autonomía y representación sindical frente a la regulación de su funcionamiento.</p>
+				<div class="axis-scale"><span class="axis-label">Autonomía sindical</span><div class="axis-control"><input class="axis-range" type="range" min="0" max="100" value="50" aria-label="Sindicatos: de autonomía sindical a mayor regulación" aria-valuetext="Posición neutral, 50 de 100"><output class="axis-value">Posición neutral · 50/100</output></div><span class="axis-label">Mayor regulación</span></div>
+			</article>
+			<article class="axis-item">
+				<h2 class="axis-title">Política exterior <button class="axis-info-button" type="button" aria-label="Información sobre Política exterior" aria-expanded="false" aria-controls="axis-help-exterior">i</button></h2>
+				<p class="axis-help" id="axis-help-exterior" hidden>Explora el énfasis en la cooperación multilateral frente a alianzas y prioridades estratégicas.</p>
+				<div class="axis-scale"><span class="axis-label">Multilateralismo</span><div class="axis-control"><input class="axis-range" type="range" min="0" max="100" value="50" aria-label="Política exterior: de multilateralismo a alineamientos estratégicos" aria-valuetext="Posición neutral, 50 de 100"><output class="axis-value">Posición neutral · 50/100</output></div><span class="axis-label">Alineamientos estratégicos</span></div>
+			</article>
+			<article class="axis-item">
+				<h2 class="axis-title">Migración <button class="axis-info-button" type="button" aria-label="Información sobre Migración" aria-expanded="false" aria-controls="axis-help-migracion">i</button></h2>
+				<p class="axis-help" id="axis-help-migracion" hidden>Compara políticas migratorias centradas en la apertura y la integración con controles más restrictivos.</p>
+				<div class="axis-scale"><span class="axis-label">Apertura e integración</span><div class="axis-control"><input class="axis-range" type="range" min="0" max="100" value="50" aria-label="Migración: de apertura e integración a mayores restricciones" aria-valuetext="Posición neutral, 50 de 100"><output class="axis-value">Posición neutral · 50/100</output></div><span class="axis-label">Mayores restricciones</span></div>
+			</article>
+			<article class="axis-item">
+				<h2 class="axis-title">Igualdad de género <button class="axis-info-button" type="button" aria-label="Información sobre Igualdad de género" aria-expanded="false" aria-controls="axis-help-genero">i</button></h2>
+				<p class="axis-help" id="axis-help-genero" hidden>Aborda políticas de igualdad, inclusión y derechos relacionados con el género.</p>
+				<div class="axis-scale"><span class="axis-label">Políticas de igualdad</span><div class="axis-control"><input class="axis-range" type="range" min="0" max="100" value="50" aria-label="Igualdad de género: de políticas de igualdad a enfoques tradicionales" aria-valuetext="Posición neutral, 50 de 100"><output class="axis-value">Posición neutral · 50/100</output></div><span class="axis-label">Enfoques tradicionales</span></div>
+			</article>
+			<article class="axis-item">
+				<h2 class="axis-title">Corrupción <button class="axis-info-button" type="button" aria-label="Información sobre Corrupción" aria-expanded="false" aria-controls="axis-help-corrupcion">i</button></h2>
+				<p class="axis-help" id="axis-help-corrupcion" hidden>Considera herramientas institucionales de transparencia, control y rendición de cuentas.</p>
+				<div class="axis-scale"><span class="axis-label">Control institucional</span><div class="axis-control"><input class="axis-range" type="range" min="0" max="100" value="50" aria-label="Corrupción: de control institucional a transparencia y rendición de cuentas" aria-valuetext="Posición neutral, 50 de 100"><output class="axis-value">Posición neutral · 50/100</output></div><span class="axis-label">Transparencia y rendición</span></div>
+			</article>
 		</section>
 	</main>
 
-	<footer><div class="footer-inner" aria-label="Enlaces de contacto"><a class="footer-link" href="#instagram" aria-label="Instagram">ig</a><a class="footer-link" href="#donaciones" aria-label="Donaciones">$</a><a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico">@</a></div></footer>
+	<footer class="axis-footer">
+		<nav class="footer-inner" aria-label="Enlaces de contacto">
+			<a class="footer-link" href="#instagram" aria-label="Instagram"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"></rect><circle cx="12" cy="12" r="3.5"></circle><circle class="icon-dot" cx="17.5" cy="6.8" r="1"></circle></svg></a>
+			<a class="footer-link" href="#donaciones" aria-label="Donaciones"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 20.2s-7.5-4.4-7.5-10A4.1 4.1 0 0 1 12 7.7a4.1 4.1 0 0 1 7.5 2.5c0 5.6-7.5 10-7.5 10Z"></path></svg></a>
+			<a class="footer-link" href="mailto:contacto@oidmortales.com" aria-label="Correo electrónico"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3.5" y="5.5" width="17" height="13" rx="2"></rect><path d="m4.5 7 7.5 6 7.5-6"></path></svg></a>
+		</nav>
+	</footer>
+
 	<script>
 		const menuButton = document.querySelector('.menu-toggle');
 		const sideMenu = document.querySelector('#side-menu');
-		menuButton.addEventListener('click', () => { const isOpen = sideMenu.classList.toggle('open'); menuButton.setAttribute('aria-expanded', String(isOpen)); });
+		menuButton.addEventListener('click', () => {
+			const isOpen = sideMenu.classList.toggle('open');
+			menuButton.setAttribute('aria-expanded', String(isOpen));
+		});
+
+		document.querySelectorAll('.axis-range').forEach((slider) => {
+			const output = slider.parentElement.querySelector('.axis-value');
+			const updatePosition = () => {
+				const value = Number(slider.value);
+				const position = value < 45 ? 'Hacia el extremo izquierdo' : value > 55 ? 'Hacia el extremo derecho' : 'Posición neutral';
+				output.textContent = `${position} · ${value}/100`;
+				slider.setAttribute('aria-valuetext', `${position}, ${value} de 100`);
+			};
+			slider.addEventListener('input', updatePosition);
+		});
+
+		document.querySelectorAll('.axis-info-button').forEach((button) => {
+			button.addEventListener('click', () => {
+				const isExpanded = button.getAttribute('aria-expanded') === 'true';
+				button.setAttribute('aria-expanded', String(!isExpanded));
+				document.getElementById(button.getAttribute('aria-controls')).hidden = isExpanded;
+			});
+		});
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key !== 'Escape') return;
+			document.querySelectorAll('.axis-info-button[aria-expanded="true"]').forEach((button) => {
+				button.setAttribute('aria-expanded', 'false');
+				document.getElementById(button.getAttribute('aria-controls')).hidden = true;
+				button.focus();
+			});
+		});
 	</script>
 </body>
 </html>
