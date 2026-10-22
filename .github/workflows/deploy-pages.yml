@@ -27,6 +27,8 @@ jobs:
 
       - name: Set up GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Create site entry point
         run: cp HTML/Index.html HTML/index.html
