@@ -49,7 +49,7 @@
 			<div class="map-intro">
 				<p class="map-eyebrow">Argentina · 24 distritos electorales</p>
 				<h2 id="map-card-title">Explorá el mapa político</h2>
-				<p id="map-help">Hacé clic o tocá una provincia —o elegila en el menú— para consultar quién está al frente de su gobierno.</p>
+				<p id="map-help">Hacé clic o tocá una provincia para ver su nombre sobre el mapa y consultar quién está al frente de su gobierno.</p>
 			</div>
 
 			<div class="map-explorer">
@@ -175,13 +175,14 @@
 			showProvince(name);
 		}
 
-		function selectProvince(name, provinces) {
+		function selectProvince(name, provinces, setMapLabel) {
 			selectedProvince = name;
 			provinces.forEach((province) => {
 				const isSelected = province.getAttribute('data-name') === name;
 				province.classList.toggle('is-selected', isSelected);
 				province.setAttribute('aria-pressed', String(isSelected));
 			});
+			setMapLabel(name ? Array.from(provinces).find((province) => province.getAttribute('data-name') === name) : null);
 			provinceSelect.value = name || '';
 			if (name) {
 				showProvince(name);
@@ -191,7 +192,59 @@
 		}
 
 		mapObject.addEventListener('load', () => {
-			const provinces = mapObject.contentDocument.querySelectorAll('.province');
+			const mapDocument = mapObject.contentDocument;
+			const mapSvg = mapDocument.documentElement;
+			const provinces = mapSvg.querySelectorAll('.province');
+			const mapLabel = mapDocument.createElementNS('http://www.w3.org/2000/svg', 'g');
+			const mapLabelBackground = mapDocument.createElementNS('http://www.w3.org/2000/svg', 'rect');
+			const mapLabelText = mapDocument.createElementNS('http://www.w3.org/2000/svg', 'text');
+			mapLabel.setAttribute('aria-hidden', 'true');
+			mapLabel.setAttribute('pointer-events', 'none');
+			mapLabel.setAttribute('visibility', 'hidden');
+			mapLabelBackground.setAttribute('fill', '#fff');
+			mapLabelBackground.setAttribute('stroke', '#111318');
+			mapLabelBackground.setAttribute('stroke-width', '2');
+			mapLabelBackground.setAttribute('rx', '5');
+			mapLabelText.setAttribute('fill', '#111318');
+			mapLabelText.setAttribute('font-family', 'Arial, sans-serif');
+			mapLabelText.setAttribute('font-size', '16');
+			mapLabelText.setAttribute('font-weight', '700');
+			mapLabelText.setAttribute('text-anchor', 'middle');
+			mapLabelText.setAttribute('dominant-baseline', 'central');
+			mapLabel.append(mapLabelBackground, mapLabelText);
+			mapSvg.append(mapLabel);
+
+			function setMapLabel(province) {
+				if (!province) {
+					mapLabel.setAttribute('visibility', 'hidden');
+					return;
+				}
+				mapLabelText.textContent = provinceFacts[province.getAttribute('data-name')].displayName;
+				const provinceBounds = province.getBBox();
+				const labelBounds = mapLabelText.getBBox();
+				const paddingX = 9;
+				const paddingY = 6;
+				const labelWidth = labelBounds.width + paddingX * 2;
+				const labelHeight = labelBounds.height + paddingY * 2;
+				const viewBox = mapSvg.viewBox.baseVal;
+				const centerX = provinceBounds.x + provinceBounds.width / 2;
+				const centerY = provinceBounds.y + provinceBounds.height / 2;
+				const x = Math.max(viewBox.x + labelWidth / 2, Math.min(viewBox.x + viewBox.width - labelWidth / 2, centerX));
+				const y = Math.max(viewBox.y + labelHeight / 2, Math.min(viewBox.y + viewBox.height - labelHeight / 2, centerY));
+
+				mapLabel.setAttribute('transform', `translate(${x} ${y})`);
+				mapLabelBackground.setAttribute('x', String(-labelWidth / 2));
+				mapLabelBackground.setAttribute('y', String(-labelHeight / 2));
+				mapLabelBackground.setAttribute('width', String(labelWidth));
+				mapLabelBackground.setAttribute('height', String(labelHeight));
+				mapLabel.setAttribute('visibility', 'visible');
+			}
+
+			function restoreSelectedMapLabel() {
+				const selected = Array.from(provinces).find((province) => province.getAttribute('data-name') === selectedProvince);
+				setMapLabel(selected || null);
+			}
+
 			provinces.forEach((province) => {
 				const name = province.getAttribute('data-name');
 				const details = provinceFacts[name];
@@ -201,7 +254,7 @@
 				provinceSelect.add(new Option(details.displayName, name));
 			});
 			provinceSelect.addEventListener('change', () => {
-				selectProvince(provinceSelect.value || null, provinces);
+				selectProvince(provinceSelect.value || null, provinces, setMapLabel);
 			});
 			provinces.forEach((province) => {
 				const name = province.getAttribute('data-name');
@@ -209,17 +262,29 @@
 				province.setAttribute('role', 'button');
 				province.setAttribute('aria-label', `Seleccionar ${provinceFacts[name].displayName}`);
 				province.setAttribute('aria-pressed', 'false');
-				province.addEventListener('pointerenter', () => previewProvince(name));
-				province.addEventListener('pointerleave', resetProvinceInfo);
-				province.addEventListener('focus', () => previewProvince(name));
-				province.addEventListener('blur', resetProvinceInfo);
+				province.addEventListener('pointerenter', () => {
+					previewProvince(name);
+					setMapLabel(province);
+				});
+				province.addEventListener('pointerleave', () => {
+					resetProvinceInfo();
+					restoreSelectedMapLabel();
+				});
+				province.addEventListener('focus', () => {
+					previewProvince(name);
+					setMapLabel(province);
+				});
+				province.addEventListener('blur', () => {
+					resetProvinceInfo();
+					restoreSelectedMapLabel();
+				});
 				province.addEventListener('click', () => {
-					selectProvince(name, provinces);
+					selectProvince(name, provinces, setMapLabel);
 				});
 				province.addEventListener('keydown', (event) => {
 					if (event.key === 'Enter' || event.key === ' ') {
 						event.preventDefault();
-						selectProvince(name, provinces);
+						selectProvince(name, provinces, setMapLabel);
 					}
 				});
 			});
